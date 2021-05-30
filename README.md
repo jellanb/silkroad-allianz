@@ -1,2 +1,2 @@
-# silkroad-allianz
+# silkroad-survival
 web private server silkroad
