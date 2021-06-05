@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +11,13 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+import { useSingUp } from '../hooks/useSingUP';
+import Slide from "@material-ui/core/Slide";
 
 function Copyright() {
   return (
@@ -45,7 +52,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function SignUp() {
+
+  const [open, setOpen] = useState(false);
+
+  const {
+    handleEmailOnBlur,
+    handlePasswordOnBlur,
+    handleUsernameOnBlur,
+    handlerLastNameOnBlur,
+    user,
+    createNewUser } = useSingUp();
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClick = async (e) => {
+    const result = await createNewUser(e);
+    console.log(result);
+    if (user.isValid){
+      setOpen(true);
+    }
+  }
+
+  console.log(user)
+  console.log(open)
+
   const classes = useStyles();
 
   return (
@@ -70,6 +107,8 @@ export default function SignUp() {
                 id="Primer nombre"
                 label="Primer nombre"
                 autoFocus
+                onBlur={handleUsernameOnBlur}
+                helperText={ user.errorIsValid ? user.descName : '' }
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -81,6 +120,8 @@ export default function SignUp() {
                 label="Segundo nombre"
                 name="Segundo nombre"
                 autoComplete="lname"
+                onBlur={handlerLastNameOnBlur}
+                helperText={ user.errorLastname ? user.descLast : '' }
               />
             </Grid>
             <Grid item xs={12}>
@@ -92,6 +133,8 @@ export default function SignUp() {
                 label="Email"
                 name="email"
                 autoComplete="email"
+                onBlur={handleEmailOnBlur}
+                helperText={ user.errorEmail ? user.descEmail : '' }
               />
             </Grid>
             <Grid item xs={12}>
@@ -104,21 +147,23 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onBlur={handlePasswordOnBlur}
+                helperText={ user.errorPass ? user.descPass : '' }
               />
-            </Grid>            
+            </Grid>
           </Grid>
           <Button
-            type="submit"
+            type="reset"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleClick}
           >
             Crear cuenta
           </Button>
           <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="default"
@@ -139,6 +184,34 @@ export default function SignUp() {
       <Box mt={5}>
         <Copyright />
       </Box>
+
+
+      <div>
+        <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">{"Felicitaciones has creado tu cuenta correctamene!"}</DialogTitle>
+          <DialogContent>
+          </DialogContent>
+          <DialogActions>
+            <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
+              <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+              >
+                Aceptar
+              </Button>
+            </Link>
+          </DialogActions>
+        </Dialog>
+      </div>
     </Container>
   );
 }

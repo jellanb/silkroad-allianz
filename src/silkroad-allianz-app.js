@@ -1,7 +1,6 @@
 import React from 'react';
 import Main from './pages/Main'
 import SingUp from './pages/SingUp'
-//import SingIn from './pages/SingIn'
 import {
     BrowserRouter as Router,
     Switch,
@@ -10,7 +9,7 @@ import {
 
 
 export default function SilkRoadAllianzApp (){
-    
+
 
     return (
         <React.Fragment>
@@ -21,8 +20,8 @@ export default function SilkRoadAllianzApp (){
                     </Route>
                     <Route exact path='/'>
                         <Main/>
-                    </Route>                    
-                </Switch>       
+                    </Route>
+                </Switch>
             </Router>
         </React.Fragment>
     );

@@ -111,7 +111,7 @@ export default function Main(){
                     </Grid> */}
                 </main>
             </Container>
-            <Footer title="Silkroad Allianz" description="Servidor privado" />
+            <Footer title="Silkroad survival" description="Servidor privado" />
             </Fragment>
     )
 }
