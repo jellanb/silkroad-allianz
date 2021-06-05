@@ -29,12 +29,12 @@ import { Fragment } from 'react';
 const sections = [
     { title: 'noticias', url: '#' },
     { title: 'comunidad', url: '#' },
-    { title: 'descargar', url: '#' },
+    { title: 'descargar', url: 'download' },
     { title: 'Politicas', url: '#' }
 ];
 
 const mainFeaturedPost = {
-    title: 'Bienvenido a Silkroad Allianz',
+    title: 'Bienvenido a survival sro',
     description:
         "",
     image: imagenCenter,
