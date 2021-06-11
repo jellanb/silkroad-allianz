@@ -1,8 +1,4 @@
 import React from 'react';
-import Main from './pages/Main'
-import SingUp from './pages/SingUp'
-import Download from './pages/Download'
-import Reload from './pages/Reload'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import {
@@ -10,6 +6,12 @@ import {
     Switch,
     Route
   } from "react-router-dom";
+
+import Main from './pages/Main'
+import SingUp from './pages/SingUp';
+import Download from './pages/Download';
+import Reload from './pages/Reload';
+import Politics from './pages/Politics';
 
 import imagenCenter from './images/SRO-Preview.jpeg'
 
@@ -40,6 +42,9 @@ export default function SilkRoadAllianzApp (){
                     </Route>                    
                     <Route exact path='/download'>
                         <Download/>
+                    </Route>
+                    <Route exact path='/politics'>
+                        <Politics/>
                     </Route>
                 </Switch>
             </Router>

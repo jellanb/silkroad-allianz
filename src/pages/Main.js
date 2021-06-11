@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 const sections = [
     { title: 'Recarga', url: 'reload' },
     { title: 'Descargas', url: 'download' },
-    { title: 'Politicas', url: '#' }
+    { title: 'Politicas', url: 'politics' }
 ];
 
 const mainFeaturedPost = {

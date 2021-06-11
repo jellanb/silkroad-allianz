@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -100,12 +101,12 @@ export default function SignUp() {
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="Primer nombre"
+                name="ID Us"
                 variant="outlined"
                 required
                 fullWidth
-                id="Primer nombre"
-                label="Primer nombre"
+                id="ID usuario"
+                label="ID usuario"
                 autoFocus
                 onBlur={handleUsernameOnBlur}
                 helperText={ user.errorIsValid ? user.descName : '' }
@@ -116,9 +117,9 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="Segundo nombre"
-                label="Segundo nombre"
-                name="Segundo nombre"
+                id="Nombre"
+                label="Nombre"
+                name="Nombre"
                 autoComplete="lname"
                 onBlur={handlerLastNameOnBlur}
                 helperText={ user.errorLastname ? user.descLast : '' }
