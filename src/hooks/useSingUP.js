@@ -16,7 +16,7 @@ export const useSingUp = () => {
             setUser({...user, errorIsValid: true, descName: `Username is required!`})
             return
         }
-        if (result.isValid === true) {
+        if (result.userValid === true) {
             setUser({...user, isValid: result.isValid, username: value, errorIsValid: false, descName: ''})
         } else {
             setUser({...user, errorIsValid: true, descName: `Username ${value} already exist!`})
@@ -25,7 +25,7 @@ export const useSingUp = () => {
 
     const handlerLastNameOnBlur = async (e) => {
         const value = e.target.value;
-        if (user.isValid && value) {
+        if (value) {
             setUser({...user, lastName: value, errorLastname: false, descLast: ''})
         } else {
             setUser({...user, errorLastname: true, descLast: 'LastName is required!'})

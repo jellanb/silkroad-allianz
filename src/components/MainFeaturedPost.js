@@ -10,12 +10,11 @@ const useStyles = makeStyles((theme) => ({
     mainFeaturedPost: {
         position: 'relative',
         backgroundColor: theme.palette.grey[800],
-        color: theme.palette.common.white,
         marginBottom: theme.spacing(4),
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        padding: theme.spacing(13),
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
+        
     },
     overlay: {
         position: 'absolute',
@@ -43,7 +42,7 @@ export default function MainFeaturedPost(props) {
         <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
             {/* Increase the priority of the hero background image */}
             {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-            <div className={classes.overlay} />
+            <div  />
             <Grid container>
                 <Grid item md={6}>
                     <div className={classes.mainFeaturedPostContent}>

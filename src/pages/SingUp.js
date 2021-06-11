@@ -75,7 +75,7 @@ export default function SignUp() {
   const handleClick = async (e) => {
     const result = await createNewUser(e);
     console.log(result);
-    if (user.isValid){
+    if (result !== undefined){
       setOpen(true);
     }
   }

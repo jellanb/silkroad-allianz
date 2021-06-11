@@ -1,5 +1,4 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,12 +7,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Footer from "../components/Footer";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import CardMedia from '@material-ui/core/CardMedia';
+import imagenDownload  from '../images/sroDownload.png'
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1, 1.5),
     },
     heroContent: {
-        padding: theme.spacing(8, 0, 6),
+        padding: theme.spacing(8, 14, 6),
     },
     cardHeader: {
         backgroundColor:
@@ -59,6 +57,13 @@ const useStyles = makeStyles((theme) => ({
         },
         backgroundColor: 'transparent'
     },
+    root: {
+        maxWidth: 345,
+      },
+      media: {
+        height: 240,
+        backgroundColor: 'transparent'
+      },
 }));
 
 const tiers = [
@@ -66,16 +71,19 @@ const tiers = [
         title: 'Mega Mirror',
         buttonText: 'download',
         buttonVariant: 'contained',
+        href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js'
     },
     {
         title: 'Google Mirror',
         buttonText: 'download',
         buttonVariant: 'contained',
+        href: 'https://drive.google.com/file/d/1twYF34brRrQboG5IKtwUE342CGSpKSoh/view'
     },
     {
         title: 'Mediafire Mirror',
         buttonText: 'download',
         buttonVariant: 'contained',
+        href: 'https://www.mediafire.com/file/j6lwao46tmzqy0e/Cliente.rar/file'
     },
 ];
 
@@ -84,43 +92,18 @@ export default function Pricing() {
 
     return (
         <React.Fragment>
-            <CssBaseline />
-            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-                <Toolbar className={classes.toolbar}>
-                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                        Survival silkroad
-                    </Typography>
-                   {/* <nav>
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Features
-                        </Link>
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Enterprise
-                        </Link>
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Support
-                        </Link>
-                    </nav>*/}
-                    <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            color="default"
-                            className={classes.submit}
-                        >
-                            Volver
-                        </Button>
-                    </Link>
-                </Toolbar>
-            </AppBar>
+            <CssBaseline />            
             {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    Descargar cliente survivalsro
-                </Typography>
+            <Card className={classes.root}>
+                <CardMedia
+                className={classes.media}
+                image={imagenDownload}
+                />
+            </Card>                
             </Container>
             {/* End hero unit */}
-            <Container maxWidth="md" component="main">
+            <Container maxWidth="xl" component="main">
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
@@ -136,7 +119,11 @@ export default function Pricing() {
                                 <CardContent>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth variant={tier.buttonVariant} color="primary">
+                                    <Button 
+                                    onClick={()=> window.open(tier.href, "_blank")}
+                                    fullWidth 
+                                    variant={tier.buttonVariant} 
+                                    color="primary">
                                         {tier.buttonText}
                                     </Button>
                                 </CardActions>
@@ -144,12 +131,18 @@ export default function Pricing() {
                         </Grid>
                     ))}
                 </Grid>
+                <br></br>
+                <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
+                    <Button
+                    fullWidth
+                    variant="contained"
+                    color="default"
+                    className={classes.submit}
+                    >
+                    Volver
+                    </Button>
+                </Link>
             </Container>
-            {/* Footer */}
-            <Container maxWidth="md" component="footer" className={classes.footer}>
-                <Footer title="Silkroad survival" description="Servidor privado" />
-            </Container>
-            {/* End footer */}
         </React.Fragment>
     );
 }

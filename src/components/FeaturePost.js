@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         flex: 1,
     },
     cardMedia: {
-        width: 160,
+        width: 220,
     },
 });
 
@@ -27,7 +27,6 @@ export default function FeaturedPost(props) {
 
     return (
         <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
                 <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                         <CardContent>
@@ -39,17 +38,20 @@ export default function FeaturedPost(props) {
                             </Typography>
                             <Typography variant="subtitle1" paragraph>
                                 {post.description}
+                                <br></br>
+                                {post.description2}
+                                <br></br>
+                                {post.description3}
                             </Typography>
-                            <Typography variant="subtitle1" color="primary">
+                            {/* <Typography variant="subtitle1" color="primary">
                                 Continue reading...
-                            </Typography>
+                            </Typography> */}
                         </CardContent>
                     </div>
                     <Hidden xsDown>
                         <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
                     </Hidden>
                 </Card>
-            </CardActionArea>
         </Grid>
     );
 }
