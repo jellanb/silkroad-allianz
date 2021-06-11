@@ -9,10 +9,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 
 import PoliticsImage from '../images/silkroad3.jpg'
 
