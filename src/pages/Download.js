@@ -97,13 +97,13 @@ const sbot = [
         title: 'Sbot Mediafire',
         buttonText: 'download bot',
         buttonVariant: 'contained',
-        href: '#'
+        href: 'https://www.mediafire.com/file/t25ppxlvslimwhp/SBOT_1.0.38_Survival.rar/file'
     },
     {
         title: 'Sbot Mega Mirror',
         buttonText: 'download bot',
         buttonVariant: 'contained',
-        href: '#'
+        href: 'https://mega.nz/file/zQJGGbxB#4MdetlFocsukuH68SnOANayjLDJCNRZ5SE59JjcHWw8'
     }
 ]
 
