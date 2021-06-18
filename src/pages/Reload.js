@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,28 +27,26 @@ const useStyles = makeStyles((theme) => ({
 export default function Community() {
   const classes = useStyles();
 
+  const load = () => {
+    const script = document.createElement('script');
+  
+    script.src = "https://www.paypal.com/sdk/js?client-id=test";
+    script.async = true;
+  
+    document.body.appendChild(script);
+  
+    return () => {
+      document.body.removeChild(script);
+    }
+  }
+
+  load();
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <Container component="main" className={classes.main} maxWidth="sm">
-        <Typography variant="h2" component="h1" gutterBottom>
-          Deshabilitada temporalmente
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          {'Esta funcionalidad esta en desarrollo por parte de nuestro equipo de developers.'}
-          {'Podras recargar silks para comprar cualquier item que tenga este metodo de venta en el server.'}
-        </Typography>
-        <Typography variant="body1">Funcionalidad desactivada temporalmente.</Typography>
-        <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-            <Button
-            fullWidth
-            variant="contained"
-            color="default"
-            className={classes.submit}
-            >
-            Volver
-            </Button>
-          </Link>
+        <Typography>Hello world</Typography>
       </Container>
     </div>
   );
