@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import logoPaypal from '../images/logoPaypal.png';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useReload } from "../hooks/useReload";
+import imagenFondo from '../images/fondoReload.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
   },
   main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
+    backgroundImage:  `url(${imagenFondo})`,
+    backgroundSize: 'cover',
   },
   footer: {
     padding: theme.spacing(3, 2),
@@ -175,7 +176,8 @@ export default function Community() {
   }
 
   const handlePaymentClick = async () => {
-    return await makePayment(totalAmount)
+     const redirectPaypal = await makePayment(totalAmount)
+     window.open(redirectPaypal, "_blank")
   }
 
   return (
@@ -193,7 +195,15 @@ export default function Community() {
                     handleChange={handleChangeAmount}
                 />
             ))}
-            <Typography gutterBottom>Total Silk a pagar : {totalAmount}</Typography>
+            <Grid>
+              <Grid item xs={2} sm={4} md={2}>
+                <Card>
+                  <CardContent>
+                    <Typography gutterBottom>Total Silk a pagar : {totalAmount}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>           
+            </Grid>
             <br/>
             <Grid container spacing={5} alignItems="flex-end">
               <Grid item xs={12} sm={6} md={4}></Grid>
@@ -209,7 +219,7 @@ export default function Community() {
                       </CardContent>
                       <CardActions>
                         <Button
-                            onClick={()=> window.open(handlePaymentClick, "_blank")}
+                            onClick={handlePaymentClick}
                             fullWidth
                             variant={tier.buttonVariant}
                             color="primary">
@@ -233,9 +243,6 @@ export default function Community() {
                   </Button>
                 </Link>
           </Container>
-          <br></br>
-          <br></br>
-          <br></br>
       </React.Fragment>
   )
 }

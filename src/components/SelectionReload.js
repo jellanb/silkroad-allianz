@@ -75,6 +75,7 @@ export default function SelectionReload({ title, max, min, defaultValue, mark, h
                         marks={mark}
                         defaultValue={defaultValue}
                         onChange={handleChangeSlider}
+                        onChangeCommitted={handleChangeSlider}
                     />
                         <div className={classes.margin} />
                 </CardContent>
