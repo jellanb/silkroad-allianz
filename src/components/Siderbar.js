@@ -9,7 +9,7 @@ export default function Sidebar({ social }) {
     return (
         <Fragment>                   
             {social.map((network) => (
-                <Link display="block" variant="body1" href={network.url} key={network}>
+                <Link style={{ color: 'white'}} display="block" variant="body1" href={network.url} key={network}>
                     <Grid container direction="row" spacing={1} alignItems="center">
                         <Grid item lg={6}></Grid>
                         <Grid item lg={1}>

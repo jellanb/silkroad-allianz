@@ -6,45 +6,37 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Link } from "react-router-dom";
-import headerButtonImage from '../images/headerButton.jpg'
-import headerImage from '../images/fondoFooter.jpg'
-import imageLogo from '../images/logocentro.png'
-import { grey } from '@material-ui/core/colors';
+import AppBar from '@material-ui/core/AppBar';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Card from '@material-ui/core/Card';
+import iconMain from '../images/logocentro2.png'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundColor: grey,
-        backgroundImage: `url(${headerImage})`,
-        backgroundSize: 'cover'
-    },
-    toolbarTitle: {
-        flex: 1,
-    },
-    toolbarSecondary: {
-        justifyContent: 'space-between',
-        overflowX: 'auto',
-        backgroundImage: `url(${headerButtonImage})`,
-        backgroundSize: 'cover',
-    },
-    toolbarLink: {
-        padding: theme.spacing(1),
-        flexShrink: 0,
-    },
-    media: {
-        paddingTop: '7%', // 16:9
-        background: 'transparent',
-        backgroundRepeat: 'no-repeat',
-        marginLeft: '34%'
-    },
-    button: {
-        backgroundColor: 'transparent'
+        backgroundColor: '#1B1919',
+        
     },
     root: {
         '& > *': {
           margin: theme.spacing(1),
         },
-      }
+    },
+    title: {
+        flexGrow: 1,
+        backgroundColor: 'black',
+    },    
+    iconMain: {
+        "& > *": {
+          margin: theme.spacing(1),
+          width: theme.spacing(24),
+          height: theme.spacing(8),
+          maxWidth: 345,
+        },
+        backgroundColor: '#1B1919',
+    },
+    cardMediaIconMain: {
+        backgroundColor: '#1B1919',
+    }        
 }));
 
 
@@ -53,36 +45,42 @@ export default function Header(props) {
 
     return (
         <React.Fragment>
-            <Toolbar className={classes.toolbar}>
-            <Link style={{ textDecoration: 'none', color: 'black'}} to='/SingUp'>
-                    <Button size="small" 
-                    variant="outlined"
-                    className={classes.button}
-                    >                    
-                        <b>Crear Cuenta</b>
-                    </Button>
-                </Link>
-                <Typography
-                    component="h2"
-                    variant="h5"
-                    color="inherit"
-                    align="center"
-                    noWrap
-                    className={classes.toolbarTitle}                    
-                >                     
-                        <CardMedia
-                        align="center"
-                            className={classes.media}
-                            image={imageLogo}
-                        />     
-                    
-                </Typography>
-                {/* <Link style={{ textDecoration: 'none', color: 'black' }} to='/SingIn'>
-                    <Button size="small" variant="outlined">                    
-                        Iniciar Sesion                    
-                    </Button>
-                </Link> */}
-            </Toolbar>            
+             <AppBar position="static" className={classes.toolbar}>
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        <Card className={classes.iconMain}>
+                                <CardMedia className={classes.cardMediaIconMain} image={iconMain} />                                                          
+                        </Card>     
+                    </Typography>
+                    <ButtonGroup groupedContainedSecondary='contained' variant="text" color="inherit" aria-label="text primary button group">
+                        <Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
+                                Inicio
+                            </Link>
+                        </Button>
+                        {/* <Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
+                                Ranking
+                            </Link>
+                        </Button> */}
+                        <Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/download'>
+                                Download
+                            </Link>
+                        </Button>
+                        <Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/politics'>
+                                Politicas
+                            </Link>
+                        </Button>
+                        <Button variant='outlined' color="inherit">
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/SingUp'>
+                                Crear Cuenta
+                            </Link>
+                        </Button>
+                    </ButtonGroup>              
+                </Toolbar>  
+             </AppBar>                      
         </React.Fragment>
     );
 }

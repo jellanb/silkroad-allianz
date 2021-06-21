@@ -13,14 +13,6 @@ import Download from './pages/Download';
 import Reload from './pages/Reload';
 import Politics from './pages/Politics';
 
-import imagenCenter from './images/SRO-Preview.jpeg'
-
-const sections = [
-    { title: 'Comunidad', url: '#' },
-    { title: 'Recarga', url: 'reload' },
-    { title: 'Descargas', url: 'download' },
-    { title: 'Politicas', url: '#' }
-];
 
 export default function SilkRoadAllianzApp (){
 
@@ -29,7 +21,7 @@ export default function SilkRoadAllianzApp (){
         <React.Fragment>
             
             <Router>
-            <Header title={imagenCenter} sections={sections} />
+            <Header/>
                 <Switch>
                     <Route exact path='/'>
                         <Main/>
@@ -48,7 +40,7 @@ export default function SilkRoadAllianzApp (){
                     </Route>
                 </Switch>
             </Router>
-            <Footer title="Silkroad survival" description="Servidor privado" />
+            <Footer title="Silkroad Survival" description="Servidor Privado" />
         </React.Fragment>
     );
 }

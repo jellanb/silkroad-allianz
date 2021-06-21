@@ -1,117 +1,94 @@
+import { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import CardMedia from '@material-ui/core/CardMedia';
+import Card from '@material-ui/core/Card';
+import Carousel from 'react-material-ui-carousel'
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import imagenFond from '../images/fondoMain1.jpg'
+import imagenFond2 from '../images/fondoMain2.jpg'
+import imagenFond3 from '../images/fondoMain3.jpg'
+import { Container } from '@material-ui/core';
+import imagenDownload  from '../images/sroDownload.png';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import { Link } from "react-router-dom";
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import MainFeaturedPost from '../components/MainFeaturedPost';
-import FeaturedPost from '../components/FeaturePost';
-// import Main from '../src/pages/Main';
-// import post1 from '../src/utils/blog-post.1.md';
-// import post2 from '../src/utils/blog-post.2.md';
-// import post3 from '../src/utils/blog-post.3.md';
-
-import imagenCenter from '../images/SRO-Preview.jpeg'
-import imgCommingzoon from '../images/silkroadProximamente.jpg'
-import imgUpdate from '../images/silkroadActualizacion.jpg'
-import toolbarImage from '../images/fondoPergaino.jpg'
-import headerButtonImage from '../images/headerButton.jpg'
-import { Fragment } from 'react';
 
 const useStyles = makeStyles((theme) => ({
-    mainGrid: {
-        marginTop: theme.spacing(3),
-        width: 160
-    },
     container: {
-        backgroundImage: `url(  ${toolbarImage})`,
-        backgroundSize: 'cover',
+        backgroundColor: 'black'
     },
-    toolbarSecondary: {
-        justifyContent: 'space-between',
-        overflowX: 'auto',
-        backgroundImage: `url(${headerButtonImage})`,
-        backgroundSize: 'cover',
+    root: {
+        "& > *": {
+          marginLeft: theme.spacing(60),
+          width: theme.spacing(200),
+        }
     },
-    toolbarLink: {
-        padding: theme.spacing(1),
-        flexShrink: 0,
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+    },
+    mediaDownload: {
+        height: 240,
+    },
+    rootCard: {
+        maxWidth: 2000,
+        height: theme.spacing(90),
+    },
+    Card: {
+        maxWidth: 345,
+        backgroundColor: 'transparent',
     },
 }));
 
 
-
-const sections = [
-    { title: 'Recarga', url: 'reload' },
-    { title: 'Descargas', url: 'download' },
-    { title: 'Politicas', url: 'politics' }
-];
-
-const mainFeaturedPost = {
-    title: '',
-    description:
-        "",
-    image: imagenCenter,
-    imgText: 'main image description',
-};
-
-const featuredPosts = [
-    {
-        title: 'Detalles de actualización',
-        date: 'Junio 30',
-        description:
-            'Se mejoraron los NPC de posiones y se habilitaron los drops de items Egypt para los unicos de niveles mas altos, habilitados todos los eventos, Pruebas de carga del servidor para mas de 10.000 usuarios!',
-        image: imgCommingzoon,
-        imageText: 'Image Text',
-    },
-    {
-        title: 'Detalles del juego',
-        date: 'Junio 01',
-        description: 'CAP: 110',
-        description2: 'EXP: 35x',
-        description3: 'Degree: 11',
-        image: imgUpdate,
-        imageText: 'Image Text',
-    },
-];
-
-
 export default function Main(){
-const classes = useStyles();
+    const classes = useStyles();
+    var items = [
+        {imagen: imagenFond},
+        {imagen: imagenFond2},
+        {imagen: imagenFond3}
+    ]
+
     return(
         <Fragment>
-        <CssBaseline />
-        <Toolbar variant="dense" className={classes.toolbarSecondary}>
-                {sections.map((section) => (
-                    <Link 
-                    style={{ textDecoration: 'none', color: 'black' }} 
-                    to={section.url}
-                    key={section.title}
-                    className={classes.toolbarLink}
-                    >
-                        <Button className={classes.root}>
-                        
-                        <b>{section.title}</b>
-                        </Button>
-                    </Link>                    
-                ))}
-            </Toolbar>
-        
-            <Container maxWidth="xl" className={classes.container}>                
-                <main>
-                    <MainFeaturedPost 
-                    className={classes.mainGrid}
-                    post={mainFeaturedPost} />
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} />
-                        ))}
-                    </Grid>
-                </main>
-            </Container> 
-            <br></br>           
+        <CssBaseline />      
+            <Container maxWidth='xl' className={classes.container}>
+                <Carousel>
+                   {
+                       items.map((item, index) => <Item key={index} item={item}/>)
+                   }
+               </Carousel>
+               <div className={classes.root}>
+               <Card className={classes.Card} style={{ border: "none", boxShadow: "none" }}>
+                <CardActionArea>
+                <Link to='/download' >
+                <CardMedia
+                        className={classes.mediaDownload}
+                        image={imagenDownload}
+                        />
+                </Link>                        
+                </CardActionArea>                   
+                </Card> 
+               </div>
+               
+            </Container>         
             </Fragment>
     )
+
+    function Item({item})
+    {
+        return(
+            <Grid>
+                <Grid item xl={12}>
+                    <Card className={classes.rootCard}>
+                        <CardMedia
+                        image={item.imagen}
+                        className={classes.media}
+                        />
+                    </Card>
+                </Grid>
+            </Grid>
+        )
+    }
 }
 

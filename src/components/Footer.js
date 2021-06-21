@@ -9,14 +9,11 @@ import WhatsApp from '@material-ui/icons/WhatsApp';
 import Discord from '@material-ui/icons/Chat';
 import Sidebar from '../components/Siderbar';
 import Grid from '@material-ui/core/Grid';
-
-import footerImage from '../images/fondoFooter.jpg'
-
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2" color='white' align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link color="inherit" style={{ color: 'white'}} href="https://material-ui.com/">
                 survivalsro.com
             </Link>{' '}
             {new Date().getFullYear()}
@@ -28,9 +25,8 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
     footer: {        
         padding: theme.spacing(6, 0),
-        backgroundImage: `url(${footerImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundColor: '#1B1919',
+        color: 'white'
     },
 }));
 
@@ -43,9 +39,8 @@ const sidebar = {
     ],
 };
 
-export default function Footer(props) {
+export default function Footer({ description, title }) {
     const classes = useStyles();
-    const { description, title } = props;
 
     return (
         <footer className={classes.footer}>
@@ -57,10 +52,13 @@ export default function Footer(props) {
                 <Typography variant="h6" align="center" gutterBottom>
                     {title}
                 </Typography>
-                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                <Typography variant="subtitle1" align="center">
                     {description}
                 </Typography>
                 <Copyright />
+                <Typography variant="subtitle1" align="center">
+                    POWERED BY VPS CHAIN FROM EEUU
+                </Typography>
                 </Grid>
                 <Grid item lg={4}>
                     <Sidebar

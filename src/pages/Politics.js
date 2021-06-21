@@ -7,8 +7,6 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Fragment } from 'react';
-import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 
 import PoliticsImage from '../images/silkroad3.jpg'
 
@@ -73,17 +71,6 @@ export default function ListDividers() {
         <ListItemText primary="Coins" secondary="Si" />
       </ListItem>      
     </List>
-
-    <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-                    <Button
-                    fullWidth
-                    variant="contained"
-                    color="default"
-                    className={classes.submit}
-                    >
-                    Volver
-                    </Button>
-                </Link>
     </Container>
     </Container>
     </Fragment>

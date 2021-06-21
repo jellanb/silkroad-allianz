@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import StarIcon from '@material-ui/icons/StarBorder';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from "react-router-dom";
 import CardMedia from '@material-ui/core/CardMedia';
 import imagenDownload  from '../images/sroDownload.png'
 import donwloadFond from '../images/donwloadFond.jpg';
@@ -180,16 +179,9 @@ export default function Pricing() {
                     ))}
                 </Grid>
                 <br></br>
-                <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-                    <Button
-                    fullWidth
-                    variant="contained"
-                    color="default"
-                    className={classes.submit}
-                    >
-                    Volver
-                    </Button>
-                </Link>
+                <br></br>
+            <br></br>
+            <br></br>
             </Container>
             <br></br>
             <br></br>
