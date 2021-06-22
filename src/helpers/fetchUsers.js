@@ -2,7 +2,7 @@ import md5 from 'js-md5'
 
 
 export const UseFetchUsersByName = async (name) => {
-    const url = `http://survivalsro.com:8081/api/Users/GetUserByName?username=${name}`;
+    const url = `http://localhost:8081/api/Users/GetUserByName?username=${name}`;
     return (await fetch(url, {mode: 'cors', method:'GET'})).json();
 }
 
