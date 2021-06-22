@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Card from '@material-ui/core/Card';
-import iconMain from '../images/logocentro2.png'
+import iconMain from '../images/logocentro2.png';
+import ControlAccount from './ControlAccount';
+
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -42,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
     const classes = useStyles();
-
+    
+    
     return (
         <React.Fragment>
              <AppBar position="static" className={classes.toolbar}>
@@ -73,11 +76,17 @@ export default function Header(props) {
                                 Politicas
                             </Link>
                         </Button>
-                        <Button variant='outlined' color="inherit">
+                        <Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/Reload'>
+                                Recarga
+                            </Link>
+                        </Button>
+                        <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/SingUp'>
                                 Crear Cuenta
                             </Link>
                         </Button>
+                        <ControlAccount/>
                     </ButtonGroup>              
                 </Toolbar>  
              </AppBar>                      

@@ -232,16 +232,6 @@ export default function Community() {
             </Grid>
             <br/>
             <Grid item xs={12} sm={6} md={4}></Grid>
-                <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-                  <Button
-                      fullWidth
-                      variant="contained"
-                      color="default"
-                      className={classes.submit}
-                  >
-                    Volver
-                  </Button>
-                </Link>
           </Container>
       </React.Fragment>
   )
