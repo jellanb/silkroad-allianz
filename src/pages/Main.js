@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         "& > *": {
-          marginLeft: theme.spacing(60),
+          marginLeft: '40%',
           width: theme.spacing(200),
-        }
+        },
     },
     media: {
         height: 0,
@@ -51,7 +51,7 @@ export default function Main(){
 
     return(
         <Fragment>
-        <CssBaseline />      
+        <CssBaseline />
             <Container maxWidth='xl' className={classes.container}>
                 <Carousel>
                    {
@@ -66,12 +66,12 @@ export default function Main(){
                         className={classes.mediaDownload}
                         image={imagenDownload}
                         />
-                </Link>                        
-                </CardActionArea>                   
-                </Card> 
+                </Link>
+                </CardActionArea>
+                </Card>
                </div>
-               
-            </Container>         
+
+            </Container>
             </Fragment>
     )
 
