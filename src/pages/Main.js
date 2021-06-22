@@ -12,6 +12,7 @@ import { Container } from '@material-ui/core';
 import imagenDownload  from '../images/sroDownload.png';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { Link } from "react-router-dom";
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -19,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         "& > *": {
-          marginLeft: '40%',
           width: theme.spacing(200),
         },
     },
@@ -58,18 +58,25 @@ export default function Main(){
                        items.map((item, index) => <Item key={index} item={item}/>)
                    }
                </Carousel>
-               <div className={classes.root}>
-               <Card className={classes.Card} style={{ border: "none", boxShadow: "none" }}>
-                <CardActionArea>
-                <Link to='/download' >
-                <CardMedia
-                        className={classes.mediaDownload}
-                        image={imagenDownload}
-                        />
-                </Link>
-                </CardActionArea>
-                </Card>
-               </div>
+                <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <div className={classes.root}>
+                        <Card className={classes.Card} style={{ border: "none", boxShadow: "none" }}>
+                            <CardActionArea>
+                                <Link to='/download' >
+                                    <CardMedia
+                                        className={classes.mediaDownload}
+                                        image={imagenDownload}
+                                    />
+                                </Link>
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                </Box>
+
 
             </Container>
             </Fragment>
