@@ -3,8 +3,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+//import FormControlLabel from '@material-ui/core/FormControlLabel';
+//import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -58,12 +58,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SignInSide() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const { 
-    user,    
+  const {
+    user,
     onLoginClick,
     handlePasswordOnBlur,
     handleUsernameOnBlur,
-    userCtx 
+    userCtx
   } = useSingIn()
 
     const handleClose = () => {
@@ -72,7 +72,7 @@ export default function SignInSide() {
 
     const handleClick = async (e) => {
       await onLoginClick(e);
-      setOpen(true); 
+      setOpen(true);
     }
 
   return (
@@ -115,10 +115,10 @@ export default function SignInSide() {
               onBlur={handlePasswordOnBlur}
               helperText={user.errorPass ? user.descPass : ''}
             />
-            <FormControlLabel
+            {/*<FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            />*/}
             <Button
               type="submit"
               fullWidth
@@ -129,7 +129,7 @@ export default function SignInSide() {
             >
               Entrar
             </Button>
-            <Grid container>
+           {/* <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
@@ -140,7 +140,7 @@ export default function SignInSide() {
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid>*/}
           </form>
         </div>
       </Grid>
