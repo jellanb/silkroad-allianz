@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
@@ -168,11 +168,13 @@ const SilkRatio = [
 
 export default function Community() {
   const classes = useStyles();
+  const [totalSilk, setTotalSilk] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const { makePayment } = useReload()
 
   const handleChangeAmount = (quantity) => {
-    setTotalAmount(quantity)
+    setTotalAmount(quantity/200)
+    setTotalSilk(quantity)
   }
 
   const handlePaymentClick = async () => {
@@ -199,10 +201,11 @@ export default function Community() {
               <Grid item xs={2} sm={4} md={2}>
                 <Card>
                   <CardContent>
-                    <Typography gutterBottom>Total Silk a pagar : {totalAmount}</Typography>
+                    <Typography gutterBottom>Total Silk : {totalSilk}</Typography>
+                    <Typography gutterBottom>Total Silk a pagar : {totalAmount} $</Typography>
                   </CardContent>
                 </Card>
-              </Grid>           
+              </Grid>
             </Grid>
             <br/>
             <Grid container spacing={5} alignItems="flex-end">
