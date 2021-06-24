@@ -1,20 +1,20 @@
 import { useState, useContext } from 'react';
-import { UserFetchLoging, UseFetchUsersByName } from '../helpers/fetchUsers'
+import { UserFetchLogin, UseFetchUsersByName } from '../helpers/fetchUsers'
 import { UserContext } from '../hooks/UserContext';
 
 export const useSingIn = () => {
     const [user, setUser] = useState({});
     const  { userCtx, setUserCtx }  = useContext(UserContext);
-    
+
     const handleUsernameOnBlur = async (e) => {
         const value = e.target.value;
         const result = await UseFetchUsersByName(value);
-
+        console.log(result)
         if (!value) {
             setUser({...user, errorIsValid: true, descName: `Username is required!`})
             return
         }
-        if (result.userValid === false) {
+        if (result.isValid) {
             setUser({...user, username: value, errorIsValid: false, descName: ''})
         } else {
             setUser({...user, errorIsValid: true, descName: `Username ${value} not exist!`})
@@ -33,17 +33,17 @@ export const useSingIn = () => {
         }
     }
 
-    const onLoginClick = async (e) => { 
+    const onLoginClick = async (e) => {
         e.preventDefault();
-        const login = await UserFetchLoging(user.username, user.password)
+        const login = await UserFetchLogin(user.username, user.password)
         if (login.isSingIn)
         {
-            setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: login.isSingIn, sesionDesc: login.sesionDesc, url: '' })
+            setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: login.isSingIn, description: login.description, url: '' })
         }
         else
         {
-            setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: false, sesionDesc: login.sesionDesc, url: 'SingIn' })
-        }        
+            setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: false, description: login.description, url: 'SingIn' })
+        }
     }
 
     return {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/app/header/Header';
+import Footer from './components/app/footer/Footer';
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,7 +21,7 @@ export default function SilkRoadAllianzApp (){
 
     return (
         <UserContext.Provider value={{userCtx, setUserCtx}}>
-        <React.Fragment>            
+        <React.Fragment>
             <Router>
             <Header/>
                 <Switch>
@@ -34,9 +34,7 @@ export default function SilkRoadAllianzApp (){
                     <Route exact path='/singIn'>
                         <SingIn/>
                     </Route>
-                    <Route exact path='/reload'>
-                        <Reload/>
-                    </Route>                    
+                    <Route exact path='/reload' component={Reload} />
                     <Route exact path='/download'>
                         <Download/>
                     </Route>

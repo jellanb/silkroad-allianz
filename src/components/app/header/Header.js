@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Card from '@material-ui/core/Card';
-import iconMain from '../images/logocentro2.png';
+import iconMain from '../../../images/logocentro2.png';
 import ControlAccount from './ControlAccount';
 
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         backgroundColor: '#1B1919',
-        
+
     },
     root: {
         '& > *': {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
         backgroundColor: 'black',
-    },    
+    },
     iconMain: {
         "& > *": {
           margin: theme.spacing(1),
@@ -38,22 +38,22 @@ const useStyles = makeStyles((theme) => ({
     },
     cardMediaIconMain: {
         backgroundColor: '#1B1919',
-    }        
+    }
 }));
 
 
 export default function Header(props) {
     const classes = useStyles();
-    
-    
+
+
     return (
         <React.Fragment>
              <AppBar position="static" className={classes.toolbar}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <Card className={classes.iconMain}>
-                                <CardMedia className={classes.cardMediaIconMain} image={iconMain} />                                                          
-                        </Card>     
+                                <CardMedia className={classes.cardMediaIconMain} image={iconMain} />
+                        </Card>
                     </Typography>
                     <ButtonGroup groupedContainedSecondary='contained' variant="text" color="inherit" aria-label="text primary button group">
                         <Button>
@@ -87,9 +87,9 @@ export default function Header(props) {
                             </Link>
                         </Button>
                         <ControlAccount/>
-                    </ButtonGroup>              
-                </Toolbar>  
-             </AppBar>                      
+                    </ButtonGroup>
+                </Toolbar>
+             </AppBar>
         </React.Fragment>
     );
 }

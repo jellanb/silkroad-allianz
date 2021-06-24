@@ -7,7 +7,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsApp from '@material-ui/icons/WhatsApp';
 import Discord from '@material-ui/icons/Chat';
-import Sidebar from '../components/Siderbar';
+import Sidebar from './Siderbar';
 import Grid from '@material-ui/core/Grid';
 function Copyright() {
     return (
@@ -23,7 +23,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-    footer: {        
+    footer: {
         padding: theme.spacing(6, 0),
         backgroundColor: '#1B1919',
         color: 'white'
@@ -64,7 +64,7 @@ export default function Footer({ description, title }) {
                     <Sidebar
                     social={sidebar.social}
                     />
-                </Grid>                        
+                </Grid>
             </Grid>
         </footer>
     );

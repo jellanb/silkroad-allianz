@@ -58,6 +58,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SignInSide() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
   const {
     user,
     onLoginClick,
@@ -154,7 +155,7 @@ export default function SignInSide() {
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title">{userCtx.sesionDesc}</DialogTitle>
+          <DialogTitle id="alert-dialog-slide-title">{userCtx.description}</DialogTitle>
           <DialogContent>
           </DialogContent>
           <DialogActions>

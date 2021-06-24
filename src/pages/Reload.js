@@ -3,7 +3,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-//import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
@@ -14,6 +13,7 @@ import logoPaypal from '../images/logoPaypal.png';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useReload } from "../hooks/useReload";
 import imagenFondo from '../images/fondoReload.jpg';
+import BackDropPayment from '../components/reload/BackDropPayment'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,44 +50,6 @@ const client = [
 ];
 
 const SilkRatio = [
-  {
-    title: 'eleccioón de silk 1 = 1$ a 100 = 100$',
-    max: 100,
-    min: 0,
-    defaultValue: 0,
-    mark: [
-        {
-          value: 0,
-        },
-      {
-        value: 10,
-      },
-      {
-        value: 20,
-      },
-      {
-        value: 30,
-      },
-      {
-        value: 40,
-      },
-      {
-        value: 50,
-      },
-      {
-        value: 60,
-      },
-      {
-        value: 70,
-      },
-      {
-        value: 80,
-      },
-      {
-        value: 90,
-      }
-        ]
-  },
   {
     title: 'eleccioón de silk 100 = 100$ a 1000 = 1000$',
     max: 1000,
@@ -166,11 +128,11 @@ const SilkRatio = [
   },
 ]
 
-export default function Community() {
+export default function Reload({history}) {
   const classes = useStyles();
   const [totalSilk, setTotalSilk] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const { makePayment } = useReload()
+  const { makePayment, load, setLoad } = useReload(history)
 
   const handleChangeAmount = (quantity) => {
     setTotalAmount(quantity/200)
@@ -178,8 +140,14 @@ export default function Community() {
   }
 
   const handlePaymentClick = async () => {
-     const redirectPaypal = await makePayment(totalAmount)
-     window.open(redirectPaypal, "_blank")
+    setLoad(true)
+      const redirectPaypal = await makePayment(totalAmount, totalSilk)
+      if(!redirectPaypal){
+        setLoad(false)
+        return
+      }
+      window.open(redirectPaypal, "_blank")
+    setLoad(false)
   }
 
   return (
@@ -236,6 +204,7 @@ export default function Community() {
             <br/>
             <Grid item xs={12} sm={6} md={4}></Grid>
           </Container>
+        <BackDropPayment open={load} />ª
       </React.Fragment>
   )
 }

@@ -1,7 +1,7 @@
 
 
-export const UseFetchCreateOrderPayment = async (amount) => {
-        const url = `http://localhost:3001/survivalsro/api/Payment/createPayment?amount=${amount}`;
-        return (await fetch(url, {mode:'cors', method:'POST'})).json();
-    
+export const UseFetchCreateOrderPayment = async (username, amount, silk) => {
+        const url = `http://localhost:3002/survivalsro/api/Payment/createPayment?username=${username}&amount=${amount}&silkQuantity=${silk}`;
+        return (await fetch(url, {mode:'cors', method:'GET'})).json();
+
 }

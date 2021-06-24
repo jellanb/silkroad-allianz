@@ -16,10 +16,11 @@ export const useSingUp = () => {
             setUser({...user, errorIsValid: true, descName: `Username is required!`})
             return
         }
-        if (result.userValid === true) {
-            setUser({...user, isValid: result.isValid, username: value, errorIsValid: false, descName: ''})
-        } else {
+        if (result.isValid) {
             setUser({...user, errorIsValid: true, descName: `Username ${value} already exist!`})
+        } else {
+            setUser({...user, isValid: result.isValid, username: value, errorIsValid: false, descName: ''})
+
         }
     }
 
@@ -40,12 +41,12 @@ export const useSingUp = () => {
             setUser({ ...user, errorEmail: true, descEmail:'email is invalid!' })
             return
         }
-        if (!(await UserFetchEmailByEmail(value)).isValid) {
-            setUser({...user, errorEmail: true, descEmail: 'email already exist!'})
-        }
-        else
-        {
+        const email = await UserFetchEmailByEmail(value)
+        if (email.isValid) {
             setUser({ ...user, email: value, errorEmail: false, descEmail:'' })
+        }
+        else {
+            setUser({...user, errorEmail: true, descEmail: 'email already exist!'})
         }
     }
 
