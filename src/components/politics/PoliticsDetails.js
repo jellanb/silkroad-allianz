@@ -78,19 +78,34 @@ export default function MediaCard() {
                                     3) ETAPA COMERCIALIZACION
                                 </h3>
                                 <p>
-                                    e permitirá una libre comercialización de ítems dentro del servidor la cual estaremos muy atentos para evitar todo tipo de robos o scarmer.
+                                    Se permitirá una libre comercialización de ítems dentro del servidor la cual estaremos muy atentos para evitar todo tipo de robos o scarmer.
                                     Sin embargo, para conservar un mejor y mas seguro medio de transferencia habilitaremos un grupo de middlema’s o mediadores los cuales tendrán la obligación de garantizar que el Exchange o intercambio se realice de la forma más rápida y segura posible.
                                     Método de acción del middlema’s
                                     El intermediario o mediador tendrá que tener contacto directo (conversar) dentro de 1 party donde deberán estar solo 3 participantes 1) Vendedor 2) Comprador y 3) Mediador.
                                     Una vez dentro del Party el
-                                    1) Vendedor deberá escribir en el CHAT PARTY (Item o Items a comercializar Y el precio de Venta. 2) Comprador Deberá confirmar que los datos son correctos.
+                                </p>
+                                <p>
+                                    1) Vendedor deberá escribir en el CHAT PARTY (Item o Items a comercializar Y el precio de Venta.
+                                </p>
+                                <p>
+                                    2) Comprador Deberá confirmar que los datos son correctos.
+                                </p>
+                                <p>
                                     3) Mediador Procede a recibir tanto los Items del 1) Vendedor y el pago del 2) Comprador Y Ejecutara la entrega a cada parte correspondiente.
+                                </p>
                                     En caso de que la comercialización sea realizada por Dinero Real (transferencia PayPal o Silk)
-                                    1) Vendedor deberá escribir en el CHAT PARTY (Item o Items a comercializar Y el precio de Venta. 2) Comprador Deberá confirmar que los datos son correctos.
+                                <p>
+                                    1) Vendedor deberá escribir en el CHAT PARTY (Item o Items a comercializar Y el precio de Venta.
+                                </p>
+                                <p>
+                                    2) Comprador Deberá confirmar que los datos son correctos.
+                                </p>
+                                <p>
                                     3)Mediador Procederá a solicitar la entrega del 10% del Pago acordado en Silk como COMICION de los ítems.
+                                </p>
+                                <p>
                                     Posteriormente procederá a solicitar los itms del comprador y solicitar la realización del pago y entrega de numero de comprobante + capture del mismo enviado al correo de soporte de SurvivalSro como medio de respaldo (SurvivalsroSoporte@Gmail.com)
                                     Una vez confirmada el recibo del pago por parte del vendedor el mediador se procederá a la entrega de los Items al comprador.
-
                                 </p>
                                 <h3>
                                     4) ETAPA DE EVENTOS
