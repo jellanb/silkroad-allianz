@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import imagenFond from '../images/fondoMain1.jpg'
 import imagenFond2 from '../images/fondoMain2.jpg'
 import imagenFond3 from '../images/fondoMain3.jpg'
+import imagenFond4 from '../images/fondoMain4.jpg'
 import { Container } from '@material-ui/core';
 import imagenDownload  from '../images/sroDownload.png';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -46,7 +47,8 @@ export default function Main(){
     var items = [
         {imagen: imagenFond},
         {imagen: imagenFond2},
-        {imagen: imagenFond3}
+        {imagen: imagenFond3},
+        {imagen: imagenFond4}
     ]
 
     return(
