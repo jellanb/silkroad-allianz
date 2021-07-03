@@ -70,7 +70,7 @@ export default function Header(props) {
                         </Button> */}
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/download'>
-                                Download
+                                Descargas
                             </Link>
                         </Button>
                         <Button>

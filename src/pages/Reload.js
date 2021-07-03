@@ -124,7 +124,7 @@ export default function Reload({history}) {
             <br/>
             <Grid item xs={12} sm={6} md={4}></Grid>
           </Container>
-        <BackDropPayment open={load} />ª
+        <BackDropPayment open={load} />
       </React.Fragment>
   )
 }
