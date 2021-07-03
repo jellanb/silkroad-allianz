@@ -4,20 +4,29 @@ import { UserContext } from '../hooks/UserContext';
 
 export const useSingIn = () => {
     const [user, setUser] = useState({});
+    const [load, setLoad] = useState(false);
     const  { userCtx, setUserCtx }  = useContext(UserContext);
 
+    const handleLogoutClick = () => {
+        setUserCtx({...userCtx, username: undefined, silk: undefined, isSingIn: false, description: '', url: '' })
+        console.log(userCtx)
+    }
+
     const handleUsernameOnBlur = async (e) => {
+        setLoad(true)
         const value = e.target.value;
         const result = await UseFetchUsersByName(value);
-        console.log(result)
         if (!value) {
             setUser({...user, errorIsValid: true, descName: `Username is required!`})
+            setLoad(false)
             return
         }
         if (result.isValid) {
             setUser({...user, username: value, errorIsValid: false, descName: ''})
+            setLoad(false)
         } else {
             setUser({...user, errorIsValid: true, descName: `Username ${value} not exist!`})
+            setLoad(false)
         }
     }
 
@@ -35,14 +44,27 @@ export const useSingIn = () => {
 
     const onLoginClick = async (e) => {
         e.preventDefault();
+        setLoad(true);
         const login = await UserFetchLogin(user.username, user.password)
         if (login.isSingIn)
         {
-            setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: login.isSingIn, description: login.description, url: '' })
+            setUserCtx({
+                ...userCtx,
+                username: login.userName,
+                silk: login.silk,
+                isSingIn: login.isSingIn,
+                description: login.description,
+                question: login.secretQuestion,
+                answer: login.secretAnswer,
+                email: login.email,
+                password: login.password,
+                url: '' })
+            setLoad(false)
         }
         else
         {
             setUserCtx({ ...userCtx, username: login.userName, silk: login.silk, isSingIn: false, description: login.description, url: 'SingIn' })
+            setLoad(false)
         }
     }
 
@@ -52,6 +74,8 @@ export const useSingIn = () => {
         handlePasswordOnBlur,
         handleUsernameOnBlur,
         userCtx,
-        setUserCtx
+        setUserCtx,
+        load,
+        handleLogoutClick
     };
 }

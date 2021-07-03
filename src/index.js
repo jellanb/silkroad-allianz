@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SilkRoadAllianzApp from "./silkroad-allianz-app";
+import SilkroadSurvivalApp from "./silkroad-survival-app";
 
 ReactDOM.render(
   <div>
-    <SilkRoadAllianzApp/>
+    <SilkroadSurvivalApp/>
   </div>,
   document.getElementById('root')
 );

@@ -13,7 +13,7 @@ import logoPaypal from '../images/logoPaypal.png';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useReload } from "../hooks/useReload";
 import imagenFondo from '../images/fondoReload.jpg';
-import BackDropPayment from '../components/reload/BackDropPayment'
+import BackDropPayment from '../components/common/BackDropPayment'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,90 +49,11 @@ const client = [
   }
 ];
 
-const SilkRatio = [
-  {
-    title: 'eleccioón de silk 100 = 100$ a 1000 = 1000$',
-    max: 1000,
-    min: 100,
-    defaultValue: 100,
-    mark: [
-      {
-        value: 0,
-      },
-      {
-        value: 100,
-      },
-      {
-        value: 200,
-      },
-      {
-        value: 300,
-      },
-      {
-        value: 400,
-      },
-      {
-        value: 500,
-      },
-      {
-        value: 600,
-      },
-      {
-        value: 700,
-      },
-      {
-        value: 800,
-      },
-      {
-        value: 900,
-      }
-    ]
-  },
-  {
-    title: 'eleccioón de silk 1000 = 1000$ a 10000 = 10000$',
-    max: 10000,
-    min: 1000,
-    defaultValue: 1000,
-    mark: [
-      {
-        value: 0,
-      },
-      {
-        value: 1000,
-      },
-      {
-        value: 2000,
-      },
-      {
-        value: 3000,
-      },
-      {
-        value: 4000,
-      },
-      {
-        value: 5000,
-      },
-      {
-        value: 6000,
-      },
-      {
-        value: 7000,
-      },
-      {
-        value: 8000,
-      },
-      {
-        value: 9000,
-      }
-    ]
-  },
-]
-
 export default function Reload({history}) {
   const classes = useStyles();
   const [totalSilk, setTotalSilk] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const { makePayment, load, setLoad } = useReload(history)
+  const { makePayment, load, setLoad, SilkRatio } = useReload(history)
 
   const handleChangeAmount = (quantity) => {
     setTotalAmount(quantity/200)
@@ -153,7 +74,6 @@ export default function Reload({history}) {
   return (
       <React.Fragment>
         <CssBaseline />
-          {/* End hero unit */}
           <Container maxWidth="xl" component="main" className={classes.main}>
             {SilkRatio.map((selection) => (
                 <SelectionReload

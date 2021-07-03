@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -19,6 +17,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from "@material-ui/core/Slide";
+import BackDropPayment from '../components/common/BackDropPayment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +63,8 @@ export default function SignInSide() {
     onLoginClick,
     handlePasswordOnBlur,
     handleUsernameOnBlur,
-    userCtx
+    userCtx,
+    load,
   } = useSingIn()
 
     const handleClose = () => {
@@ -77,101 +77,89 @@ export default function SignInSide() {
     }
 
   return (
-    <Container component="main" maxWidth="xl">
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Iniciar Sesion
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="ID cuenta"
-              label="ID cuenta"
-              name="ID cuenta"
-              autoComplete="ID cuenta"
-              autoFocus
-              onBlur={handleUsernameOnBlur}
-              helperText={user.errorIsValid ? user.descName : ''}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onBlur={handlePasswordOnBlur}
-              helperText={user.errorPass ? user.descPass : ''}
-            />
-            {/*<FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />*/}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={handleClick}
+      <Fragment>
+        <Container component="main" maxWidth="xl">
+          <Grid container component="main" className={classes.root}>
+            <CssBaseline />
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
+            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+              <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                  Iniciar Sesion
+                </Typography>
+                <form className={classes.form} noValidate>
+                  <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="ID cuenta"
+                      label="ID cuenta"
+                      name="ID cuenta"
+                      autoComplete="ID cuenta"
+                      autoFocus
+                      onBlur={handleUsernameOnBlur}
+                      helperText={user.errorIsValid ? user.descName : ''}
+                  />
+                  <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      autoComplete="current-password"
+                      onBlur={handlePasswordOnBlur}
+                      helperText={user.errorPass ? user.descPass : ''}
+                  />
+                  <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                      onClick={handleClick}
+                  >
+                    Entrar
+                  </Button>
+                </form>
+              </div>
+            </Grid>
+          </Grid>
+          <div>
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
             >
-              Entrar
-            </Button>
-           {/* <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
+              <DialogTitle id="alert-dialog-slide-title">{userCtx.description}</DialogTitle>
+              <DialogContent>
+              </DialogContent>
+              <DialogActions>
+                <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
+                  <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                  >
+                    Aceptar
+                  </Button>
                 </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>*/}
-          </form>
-        </div>
-      </Grid>
-    </Grid>
-    <div>
-        <Dialog
-            open={open}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-slide-title"
-            aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle id="alert-dialog-slide-title">{userCtx.description}</DialogTitle>
-          <DialogContent>
-          </DialogContent>
-          <DialogActions>
-            <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-              <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-              >
-                Aceptar
-              </Button>
-            </Link>
-          </DialogActions>
-        </Dialog>
-      </div>
-    </Container>
+              </DialogActions>
+            </Dialog>
+          </div>
+        </Container>
+        <BackDropPayment open={load}/>
+      </Fragment>
+
   );
 }

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(13),
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        
+
     },
     overlay: {
         position: 'absolute',
@@ -46,10 +46,10 @@ export default function MainFeaturedPost(props) {
             <Grid container>
                 <Grid item md={6}>
                     <div className={classes.mainFeaturedPostContent}>
-                        <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+                        <Typography component="h1" variant="h3" gutterBottom>
                             {post.title}
                         </Typography>
-                        <Typography variant="h5" color="inherit" paragraph>
+                        <Typography variant="h5" paragraph>
                             {post.description}
                         </Typography>
                         <Link variant="subtitle1" href="#">

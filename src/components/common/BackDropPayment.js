@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,13 +15,13 @@ export default function BackDropPayment({open}) {
     const classes = useStyles()
 
     return (
-        <div>
+        <Fragment>
             <Backdrop
                 className={classes.backdrop}
                 open={open}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
-        </div>
+        </Fragment>
     );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,6 +11,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Card from '@material-ui/core/Card';
 import iconMain from '../../../images/logocentro2.png';
 import ControlAccount from './ControlAccount';
+import { UserContext } from '../../../hooks/UserContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
     const classes = useStyles();
-
+    const  { userCtx }  = useContext(UserContext);
+    const { username, silk, isSingIn } = userCtx;
 
     return (
         <React.Fragment>
@@ -55,7 +57,7 @@ export default function Header(props) {
                                 <CardMedia className={classes.cardMediaIconMain} image={iconMain} />
                         </Card>
                     </Typography>
-                    <ButtonGroup groupedContainedSecondary='contained' variant="text" color="inherit" aria-label="text primary button group">
+                    <ButtonGroup  variant="text" color="inherit" aria-label="text primary button group">
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
                                 Inicio
@@ -76,17 +78,20 @@ export default function Header(props) {
                                 Politicas
                             </Link>
                         </Button>
-                        <Button>
-                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/Reload'>
-                                Recarga
-                            </Link>
-                        </Button>
-                        <Button>
-                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/SingUp'>
-                                Crear Cuenta
-                            </Link>
-                        </Button>
-                        <ControlAccount/>
+                        {
+                            (username)
+                                ? <Button>
+                                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/Reload'>
+                                        Recargar
+                                    </Link>
+                                </Button>
+                                : <Button>
+                                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/SingUp'>
+                                        Crear Cuenta
+                                    </Link>
+                                </Button>
+                        }
+                        <ControlAccount username={username} silk={silk} isSingIn={isSingIn}/>
                     </ButtonGroup>
                 </Toolbar>
              </AppBar>

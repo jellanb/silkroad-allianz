@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { Fragment } from 'react';
@@ -7,9 +6,9 @@ import { Fragment } from 'react';
 export default function Sidebar({ social }) {
 
     return (
-        <Fragment>                   
+        <Fragment>
             {social.map((network) => (
-                <Link style={{ color: 'white'}} display="block" variant="body1" href={network.url} key={network}>
+                <Link style={{ color: 'white'}} display="block" variant="body1" href={network.url} key={network.name}>
                     <Grid container direction="row" spacing={1} alignItems="center">
                         <Grid item lg={6}></Grid>
                         <Grid item lg={1}>
@@ -23,9 +22,3 @@ export default function Sidebar({ social }) {
     );
 }
 
-Sidebar.propTypes = {
-    archives: PropTypes.array,
-    description: PropTypes.string,
-    social: PropTypes.array,
-    title: PropTypes.string,
-};

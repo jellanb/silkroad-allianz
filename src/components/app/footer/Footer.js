@@ -11,7 +11,7 @@ import Sidebar from './Siderbar';
 import Grid from '@material-ui/core/Grid';
 function Copyright() {
     return (
-        <Typography variant="body2" color='white' align="center">
+        <Typography variant="body2" align="center">
             {'Copyright © '}
             <Link color="inherit" style={{ color: 'white'}} href="https://material-ui.com/">
                 survivalsro.com
