@@ -1,28 +1,29 @@
-import md5 from 'js-md5'
+import md5 from 'js-md5';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 export const UseFetchUsersByName = async (name) => {
-    const url = `http://localhost:3002/survivalsro/api/Users/GetUserByName?username=${name}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/GetUserByName?username=${name}`;
     return (await fetch(url, {mode: 'cors', method:'GET'})).json();
 }
 
 export const UserFetchEmailByEmail = async (email) => {
-    const url = `http://localhost:3002/survivalsro/api/Users/EmailByEmail?email=${email}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/EmailByEmail?email=${email}`;
     return (await fetch(url, {mode: 'cors' , method:'GET'})).json();
 }
 
 export const UseFetchAddUser = async (user) => {
-    const url = `http://localhost:3002/survivalsro/api/Users/SaveUser?username=${user.username}&lastName=${user.lastName}&email=${user.email}&password=${user.password}&secretQuestion=${user.secretQuestion}&secretAnswer=${user.secretAnswer}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/saveUser?username=${user.username}&lastname=${user.lastName}&email=${user.email}&password=${md5.hex(user.password)}&secretQuestion=${user.secretQuestion}&secretAnswer=${user.secretAnswer}`;
     return (await fetch(url, {mode:'cors', method:'POST'})).json();
 }
 
 export const UserFetchLogin = async (username, password) => {
-    const url = `http://localhost:3002/survivalsro/api/Users/UserByNamePassword?username=${username}&password=${md5.hex(password)}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/UserByNamePassword?username=${username}&password=${md5.hex(password)}`;
     return (await fetch(url, {mode:'cors', method:'GET'})).json();
 }
 
 export const UserFetchSaveAccountChange = async (username, password, email) => {
-    const url = `http://localhost:3002/survivalsro/api/Users/EditAccount?username=${username}&password=${password}&email=${email}`
-    console.log(url)
+    const url = `${process.env.REACT_APP_API_URL}/users/EditAccount?username=${username}&password=${md5.hex(password)}&email=${email}`
     return (await fetch(url, {mode:'cors', method:'POST'})).json();
 }

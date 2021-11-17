@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import md5 from 'js-md5'
 import { UserContext } from "./UserContext";
 import { UserFetchEmailByEmail, UserFetchSaveAccountChange } from '../helpers/fetchUsers'
 
@@ -44,7 +43,7 @@ export const UseEditAccount = () => {
         }
         const resData = await UserFetchSaveAccountChange(userCtx.username, accountData.newPassword, accountData.email)
         console.log(resData)
-        if (resData !== undefined) {
+        if (resData.username !== undefined) {
             setUserCtx({
                 ...userCtx,
                 password: resData.password,
@@ -58,7 +57,7 @@ export const UseEditAccount = () => {
 
     const handlePasswordOnBlur = async (e) => {
         setLoad(true)
-        const passwordCurrent = md5.hex(e.target.value)
+        const passwordCurrent = e.target.value
         if (passwordCurrent && passwordCurrent.length >= 6)
         {
             if (userCtx.isSingIn && userCtx.password === passwordCurrent) {
@@ -78,7 +77,7 @@ export const UseEditAccount = () => {
 
     const handleNewPasswordOnBlur = async (e) => {
         setLoad(true)
-        const value = await md5.hex(e.target.value)
+        const value = await e.target.value
         if (value && e.target.value.length >= 6) {
             setAccountData({...accountData, newPassword: value, errorNewPass: false, errorNewPassDesc: '' })
             setLoad(false)
@@ -89,7 +88,7 @@ export const UseEditAccount = () => {
     }
 
     const handleConfirmPasswordOnBlur = async (e) => {
-        const passwordConfirm = await md5.hex(e.target.value)
+        const passwordConfirm = e.target.value
         setLoad(true)
         if (passwordConfirm && e.target.value.length >= 6) {
             if (accountData.newPassword !== passwordConfirm){

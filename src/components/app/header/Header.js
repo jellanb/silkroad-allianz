@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Card from '@material-ui/core/Card';
-import iconMain from '../../../images/logocentro2.png';
+import iconMain from '../../../images/logocentro5.png';
 import ControlAccount from './ControlAccount';
 import { UserContext } from '../../../hooks/UserContext';
 
@@ -17,7 +17,6 @@ import { UserContext } from '../../../hooks/UserContext';
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         backgroundColor: '#1B1919',
-
     },
     root: {
         '& > *': {
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     iconMain: {
         "& > *": {
           margin: theme.spacing(1),
-          width: theme.spacing(24),
+          width: theme.spacing(30),
           height: theme.spacing(8),
           maxWidth: 345,
         },
@@ -63,11 +62,11 @@ export default function Header(props) {
                                 Inicio
                             </Link>
                         </Button>
-                        {/* <Button>
-                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
+                        {/*<Button>
+                            <Link style={{ textDecoration: 'none', color: 'white'}} to='/ranking'>
                                 Ranking
                             </Link>
-                        </Button> */}
+                        </Button>*/}
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/download'>
                                 Descargas

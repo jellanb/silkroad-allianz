@@ -13,9 +13,8 @@ import SingIn from './pages/SingIn';
 import Download from './pages/Download';
 import Reload from './pages/Reload';
 import Politics from './pages/Politics';
-import EditAccount from './pages/EditAccount'
+import EditAccount from './pages/EditAccount';
 import { UserContext } from './hooks/UserContext';
-
 
 export default function SilkroadSurvivalApp (){
     const [userCtx, setUserCtx] = useState({})
@@ -33,6 +32,7 @@ export default function SilkroadSurvivalApp (){
                     <Route exact path='/download' component={Download} />
                     <Route exact path='/politics' component={Politics} />
                     <Route exact path='/editAccount' component={EditAccount} />
+                    {/*<Route exact path='/Ranking' component={Ranking} />*/}
                 </Switch>
             </Router>
             <Footer title="Silkroad Survival" description="Servidor Privado" />

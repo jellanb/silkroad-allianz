@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { UseFetchUsersByName, UserFetchEmailByEmail, UseFetchAddUser } from '../helpers/fetchUsers';
-import md5 from 'js-md5'
 
 export const useSingUp = () => {
     const [user, setUser] = useState({});
@@ -42,10 +41,10 @@ export const useSingUp = () => {
             return
         }
 
-        const result = UseFetchAddUser(user)
+        const result = UseFetchAddUser(user);
         if (result !== undefined){
-            setLoad(false)
-            setDialog(true)
+            setLoad(false);
+            setDialog(true);
         }
     }
 
@@ -98,7 +97,7 @@ export const useSingUp = () => {
     }
 
     const handlePasswordOnBlur = (e) =>{
-        const password = md5.hex(e.target.value)
+        const password = e.target.value
         if (password && password.length >= 6)
         {
             setUser({ ...user, password: password,  errorPass: false, descPass: ''});
@@ -113,7 +112,7 @@ export const useSingUp = () => {
         let question = e.target.value
         console.log(question)
         if (question) {
-            setUser({...user, secretQuestion: question, errorQuestion: false, errorQuestionDesc: ''})
+            setUser({...user, secretQuestion: question.toString(), errorQuestion: false, errorQuestionDesc: ''})
         } else {
             setUser({...user, errorQuestion: true, errorQuestionDesc: 'Debe seleccionar una pregunta secreta'})
         }
@@ -122,7 +121,7 @@ export const useSingUp = () => {
     const handleSecretAnswerOnBlur = (e) => {
         let answer = e.target.value
         if (answer || answer.length > 0){
-            setUser({...user, secretAnswer: answer, errorAnswer: false, errorAnswerDesc:''})
+            setUser({...user, secretAnswer: answer.toString(), errorAnswer: false, errorAnswerDesc:''})
         } else {
             setUser({...user, errorAnswer: true, errorAnswerDesc: 'debe ingresar una respuesta secreta!'})
         }

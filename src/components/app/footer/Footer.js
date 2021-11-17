@@ -13,7 +13,7 @@ function Copyright() {
     return (
         <Typography variant="body2" align="center">
             {'Copyright © '}
-            <Link color="inherit" style={{ color: 'white'}} href="https://material-ui.com/">
+            <Link color="inherit" style={{ color: 'white'}} href="http://survivalsro.com/">
                 survivalsro.com
             </Link>{' '}
             {new Date().getFullYear()}
@@ -34,8 +34,8 @@ const sidebar = {
     social: [
         { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/survivalsro/?hl=es-la' },
         { name: 'WhatsApp', icon: WhatsApp, url: 'https://chat.whatsapp.com/FUoXQdPsizjKZFv3UWgg3Q' },
-        { name: 'Facebook', icon: FacebookIcon, url: 'https://www.facebook.com/profile.php?id=100069522990158&viewas=100000686899395' },
-        { name: 'Discord', icon: Discord, url: 'https://discord.gg/JUKC5dkF' },
+        { name: 'Facebook', icon: FacebookIcon, url: 'https://www.facebook.com/profile.php?id=100069379890071' },
+        { name: 'Discord', icon: Discord, url: 'https://discord.gg/GRfHYPnwPp' },
     ],
 };
 
@@ -45,10 +45,9 @@ export default function Footer({ description, title }) {
     return (
         <footer className={classes.footer}>
             <Grid container>
-                <Grid item lg={4}>
-
+                <Grid item lg={4} xs={12}>
                 </Grid>
-            <Grid item lg={4}>
+            <Grid item lg={4} xs={6}>
                 <Typography variant="h6" align="center" gutterBottom>
                     {title}
                 </Typography>
@@ -60,7 +59,7 @@ export default function Footer({ description, title }) {
                     POWERED BY VPS CHAIN FROM EEUU
                 </Typography>
                 </Grid>
-                <Grid item lg={4}>
+                <Grid item lg={4} xs={6}>
                     <Sidebar
                     social={sidebar.social}
                     />

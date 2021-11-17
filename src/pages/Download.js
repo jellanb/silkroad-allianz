@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1, 1.0),
     },
     heroContent: {
-        padding: theme.spacing(8, 14, 0),    
+        padding: theme.spacing(8, 14, 0),
     },
     cardHeader: {
         backgroundColor:
@@ -75,19 +75,19 @@ const client = [
         title: 'Mega Mirror',
         buttonText: 'download Client',
         buttonVariant: 'contained',
-        href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js'
+        href: process.env["REACT_APP_DOWNLOAD_CLIENT_MEGA"]
     },
     {
         title: 'Google Mirror',
         buttonText: 'download Client',
         buttonVariant: 'contained',
-        href: 'https://drive.google.com/file/d/1twYF34brRrQboG5IKtwUE342CGSpKSoh/view'
+        href: process.env["REACT_APP_DOWNLOAD_CLIENT_GOOGLE"]
     },
     {
         title: 'Mediafire Mirror',
         buttonText: 'download Client',
         buttonVariant: 'contained',
-        href: 'https://www.mediafire.com/file/j6lwao46tmzqy0e/Cliente.rar/file'
+        href: process.env["REACT_APP_DOWNLOAD_CLIENT_MEDIAFIRE"]
     },
 ];
 
@@ -111,7 +111,7 @@ export default function Pricing() {
 
     return (
         <React.Fragment>
-            <CssBaseline />            
+            <CssBaseline />
             <Container maxWidth='xl' className={classes.containedMain}>
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
             <Card className={classes.root} style={{ border: "none", boxShadow: "none" }}>
@@ -119,7 +119,7 @@ export default function Pricing() {
                 className={classes.media}
                 image={imagenDownload}
                 />
-            </Card>                
+            </Card>
             </Container>
             {/* End hero unit */}
             <Container maxWidth="xl" component="main">
@@ -138,10 +138,10 @@ export default function Pricing() {
                                 <CardContent>
                                 </CardContent>
                                 <CardActions>
-                                    <Button 
+                                    <Button
                                     onClick={()=> window.open(tier.href, "_blank")}
-                                    fullWidth 
-                                    variant={tier.buttonVariant} 
+                                    fullWidth
+                                    variant={tier.buttonVariant}
                                     color="primary">
                                         {tier.buttonText}
                                     </Button>
@@ -166,10 +166,10 @@ export default function Pricing() {
                                 <CardContent>
                                 </CardContent>
                                 <CardActions>
-                                    <Button 
+                                    <Button
                                     onClick={()=> window.open(bot.href, "_blank")}
-                                    fullWidth 
-                                    variant={bot.buttonVariant} 
+                                    fullWidth
+                                    variant={bot.buttonVariant}
                                     color="primary">
                                         {bot.buttonText}
                                     </Button>
