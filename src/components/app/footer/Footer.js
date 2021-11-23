@@ -25,7 +25,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
     footer: {
         padding: theme.spacing(6, 0),
-        backgroundColor: '#1B1919',
+        background: 'linear-gradient(360deg, #232121 30%, #1B1919 90%)',
         color: 'white'
     },
 }));

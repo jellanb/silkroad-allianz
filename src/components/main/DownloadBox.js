@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     Card: {
         maxWidth: 345,
         backgroundColor: 'transparent',
+        paddingRight: '10%'
     },
 }));
 

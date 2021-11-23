@@ -11,20 +11,21 @@ import imagenFond3 from '../images/fondoMain7.jpg'
 import imagenFond4 from '../images/fondoMain8.png'
 import { Container } from '@material-ui/core';
 import DownloadBox from '../components/main/DownloadBox';
+import ServerInfo from '../components/main/Serverinfo';
+import FortesBarInfo from '../components/main/FortessBarInfo';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundColor: 'black'
+        backgroundColor: 'black',
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '70.25%', // 16:9
     },
     rootCard: {
         backgroundSize: 'cover'
     },
 }));
-
 
 export default function Main(){
     const classes = useStyles();
@@ -38,23 +39,26 @@ export default function Main(){
     return(
         <Fragment>
         <CssBaseline />
+        <FortesBarInfo/>
             <Container maxWidth='xl' className={classes.container}>
                 <br/>
-                <Carousel>
-                   {
-                       items.map((item, index) => <Item key={index} item={item}/>)
-                   }
-               </Carousel>
-                <Grid container>
-                    <Grid item xl={12} lg={12} xs={12}>
+                <Grid container spacing={1}>
+                    <Grid item xl={2} lg={3} xs={3}>
+                        <ServerInfo/>
                         <DownloadBox />
+                    </Grid>
+                    <Grid item xl={9} lg={9} xs={9}>
+                        <Carousel>
+                            {
+                                items.map((item, index) => <Item key={index} item={item}/>)
+                            }
+                        </Carousel>
                     </Grid>
                 </Grid>
                 <br/>
             </Container>
             </Fragment>
     )
-
     function Item({item})
     {
         return(
