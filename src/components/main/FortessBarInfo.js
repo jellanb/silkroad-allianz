@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { GiAbstract103, GiAmmoniteFossil } from 'react-icons/gi';
-import { FaTools } from 'react-icons/fa';
+import { GiAbstract103, GiAmmoniteFossil, GiDeathZone } from 'react-icons/gi';
+import UseFortesBarIndo from '../../hooks/useFortesBarIndo'
 
 const useStyles = makeStyles({
     main: {
@@ -21,6 +21,11 @@ const useStyles = makeStyles({
 
 export default function FortesBarInfo() {
     const classes = useStyles();
+    const { getUserLastKill, userLastKill } = UseFortesBarIndo()
+
+    useEffect(()=> {
+        getUserLastKill()
+    }, [])
 
     return (
         <Fragment>
@@ -40,7 +45,7 @@ export default function FortesBarInfo() {
                         </Grid>
                         <Grid item xl={4} lg={4} xs={4}>
                             <Typography variant="h6" >
-                               <FaTools/> {'Last unique kills: Coming zoom'}
+                               <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
                             </Typography>
                         </Grid>
                     </Grid>

@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Header(props) {
+export default function Header() {
     const classes = useStyles();
     const  { userCtx }  = useContext(UserContext);
     const { username, silk, isSingIn } = userCtx;

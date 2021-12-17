@@ -27,3 +27,8 @@ export const UserFetchSaveAccountChange = async (username, password, email) => {
     const url = `${process.env.REACT_APP_API_URL}/users/EditAccount?username=${username}&password=${md5.hex(password)}&email=${email}`
     return (await fetch(url, {mode:'cors', method:'POST'})).json();
 }
+
+export const getUserLastUniqueKill = async () => {
+    const url = `${process.env.REACT_APP_API_URL}/users/getUserLastUniqueKill`
+    return (await fetch(url, {mode:'cors', method:'GET'})).json();
+}
