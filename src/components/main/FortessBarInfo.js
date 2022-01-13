@@ -32,20 +32,24 @@ export default function FortesBarInfo() {
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        <Grid item xl={4} lg={4} xs={4}>
-
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                 <GiAbstract103/> {'JG Fortess: OnlyFANS'}
                             </Typography>
                         </Grid>
-                        <Grid item xl={4} lg={4} xs={4}>
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                 <GiAmmoniteFossil/> {'HT Fortess: Not occupied'}
                             </Typography>
                         </Grid>
-                        <Grid item xl={4} lg={4} xs={4}>
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
+                            </Typography>
+                        </Grid>
+                        <Grid item xl={3} lg={3} xs={3}>
+                            <Typography variant="h6" >
+                                <GiDeathZone/> {`Online Players: 100`}
                             </Typography>
                         </Grid>
                     </Grid>

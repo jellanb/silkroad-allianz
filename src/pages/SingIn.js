@@ -72,8 +72,8 @@ export default function SignInSide() {
     };
 
     const handleClick = async (e) => {
-      await onLoginClick(e);
-      setOpen(true);
+        await onLoginClick(e);
+        setOpen(true);
     }
 
   return (
@@ -118,7 +118,7 @@ export default function SignInSide() {
                       helperText={user.errorPass ? user.descPass : ''}
                   />
                   <Button
-                      type="submit"
+                      //type="submit"
                       fullWidth
                       variant="contained"
                       color="primary"
