@@ -6,8 +6,8 @@ export default function UseFortesBarIndo() {
     const [userLastKill, setUserLastKill] = useState({});
 
     const getUserLastKill = async () => {
-        const { CharName16 } = await getUserLastUniqueKill()
-        setUserLastKill(CharName16)
+        const { AccountID } = await getUserLastUniqueKill()
+        setUserLastKill(AccountID)
     }
 
     return {
