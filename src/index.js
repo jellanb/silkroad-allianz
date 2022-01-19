@@ -6,7 +6,6 @@ import SilkroadSurvivalApp from "./silkroad-survival-app";
 ReactDOM.render(
   <div>
     <SilkroadSurvivalApp/>
-
   </div>,
   document.getElementById('root')
 );

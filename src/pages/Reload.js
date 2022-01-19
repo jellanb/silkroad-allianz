@@ -46,6 +46,13 @@ const client = [
     buttonVariant: 'contained',
     href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js',
     image: logoPaypal
+  },
+  {
+    title: 'MercadoPago',
+    buttonText: 'Pagar con MercadoPago',
+    buttonVariant: 'contained',
+    href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js',
+    image: logoPaypal
   }
 ];
 
@@ -60,9 +67,10 @@ export default function Reload({history}) {
     setTotalSilk(quantity)
   }
 
-  const handlePaymentClick = async () => {
+  const handlePaymentClick = async (event) => {
+    const paymentDesc = event.target.innerText
     setLoad(true)
-      const redirectPaypal = await makePayment(totalAmount, totalSilk)
+      const redirectPaypal = await makePayment(totalAmount, totalSilk, paymentDesc)
       if(!redirectPaypal){
         setLoad(false)
         return
@@ -97,7 +105,7 @@ export default function Reload({history}) {
             </Grid>
             <br/>
             <Grid container spacing={5} alignItems="flex-end">
-              <Grid item xs={12} sm={6} md={4}></Grid>
+              <Grid item xs={12} sm={6} md={2}></Grid>
               {client.map((tier) => (
                   <Grid item key={tier.title} xs={12} sm={tier.title === 'Paypal' ? 12 : 6} md={4}>
                     <Card>

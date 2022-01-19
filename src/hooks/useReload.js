@@ -6,15 +6,20 @@ export const useReload = (history) => {
     const { userCtx } = useContext(UserContext)
     const [load, setLoad] = useState(false)
 
-    const makePayment = async (amount, silk) => {
-
+    const makePayment = async (amount, silk, paymentDesc) => {
+        console.log(paymentDesc)
         if (!userCtx.username) {
-            history.push('/singIn')
+            history.push('/SingIn')
             return
         }
-
-        const result = await UseFetchCreateOrderPayment(userCtx.username, amount, silk)
-        return result.href
+        if (paymentDesc === 'PAGAR CON PAYPAL') {
+            const result = await UseFetchCreateOrderPayment(userCtx.username, amount, silk)
+            return result.href
+        }
+        if (paymentDesc === 'PAGAR CON MERCADOPAGO') {
+            history.push('/MercadoPago')
+            return
+        }
     }
 
     const SilkRatio = [
