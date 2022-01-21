@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function  MercadoPagoPayment() {
+export default function  MercadoPagoPayment({history}) {
     const classes = useStyles();
 
     return (
         <Fragment>
             <CssBaseline />
             <Container maxWidth="xl" component="main" className={classes.main}>
-                <CheckoutMercadoPago/>
+                <CheckoutMercadoPago history={history}/>
             </Container>
         </Fragment>
     )

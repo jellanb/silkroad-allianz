@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, Fragment } from "react";
 import Card from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
-import useMercadoPago from "../../hooks/useCheckOutMercadoPago";
+import {useCheckOutMercadoPago, useMercadoPagoApi} from "../../hooks/useCheckOutMercadoPago";
 import {  withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from "@material-ui/core/Grid";
 
 const BootstrapButton = withStyles({
     root: {
@@ -47,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(1),
     },
+    main: {
+        height: 550,
+    },
 }));
 
 const INITIAL_STATE = {
@@ -59,10 +64,11 @@ const INITIAL_STATE = {
     issuer: "",
 };
 
-export default function MercadoPagoForm() {
+export default function MercadoPagoForm({history}) {
     const classes = useStyles();
     const [state, setState] = useState(INITIAL_STATE);
-    const resultPayment = useMercadoPago();
+    const resultPayment = useMercadoPagoApi();
+    const { paymentSuccess } = useCheckOutMercadoPago(history);
 
     const handleInputChange = (e) => {
         setState({
@@ -76,7 +82,7 @@ export default function MercadoPagoForm() {
     };
 
     return (
-        <div className="container">
+        <Fragment className="container">
             <Card
                 cvc={state.cvc}
                 expiry={state.cardExpirationMonth + state.cardExpirationYear}
@@ -85,92 +91,142 @@ export default function MercadoPagoForm() {
                 focused={state.focus}
                 brand={state.issuer}
             />
-
-            <form id="form-checkout">
-                <div className="form-control">
-                    <input
-                        type="tel"
-                        name="cardNumber"
-                        id="form-checkout__cardNumber"
-                        onChange={handleInputChange}
-                        onFocus={handleInputFocus}
-                    />
-                </div>
-                <div className="form-control">
-                    <input
-                        type="tel"
-                        name="cardExpirationMonth"
-                        id="form-checkout__cardExpirationMonth"
-                        onChange={handleInputChange}
-                        onFocus={handleInputFocus}
-                    />
-                    <input
-                        type="tel"
-                        name="cardExpirationYear"
-                        id="form-checkout__cardExpirationYear"
-                        onChange={handleInputChange}
-                        onFocus={handleInputFocus}
-                    />
-                    <input
-                        type="tel"
-                        name="cvc"
-                        id="form-checkout__securityCode"
-                        onChange={handleInputChange}
-                        onFocus={handleInputFocus}
-                    />
-                </div>
-                <div className="form-control">
-                    <input
-                        type="text"
-                        name="cardholderName"
-                        id="form-checkout__cardholderName"
-                        onChange={handleInputChange}
-                        onFocus={handleInputFocus}
-                    />
-                    <input
-                        type="email"
-                        name="cardholderEmail"
-                        id="form-checkout__cardholderEmail"
-                        onFocus={handleInputFocus}
-                    />
-                </div>
-                <div className="form-control">
-                    <select
-                        name="issuer"
-                        id="form-checkout__issuer"
-                        on
-                    ></select>
-                    <select
-                        name="identificationType"
-                        id="form-checkout__identificationType"
-                    ></select>
-                </div>
-                <div className="form-control">
-                    <input
-                        type="text"
-                        name="identificationNumber"
-                        id="form-checkout__identificationNumber"
-                    />
-                </div>
-                <div className="form-control">
-                    <select
-                        name="installments"
-                        id="form-checkout__installments"
-                    ></select>
-                </div>
-                <div className="form-control">
-                    <BootstrapButton variant="contained" color="primary" type="submit" id="form-checkout__submit" disableRipple className={classes.margin}>
-                        Pagar
-                    </BootstrapButton>
-                   {/* <button type="submit" id="form-checkout__submit">
-                        Pagar
-                    </button>*/}
-                </div>
-                <progress value="0" className="progress-bar">
-                    Cargando...
-                </progress>
+            <Container maxWidth="xl" component="main" className={classes.main}>
+                <form id="form-checkout">
+                <Grid container spacing={5} alignItems="flex-end">
+                    <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <input
+                                    type="tel"
+                                    name="cardNumber"
+                                    id="form-checkout__cardNumber"
+                                    onChange={handleInputChange}
+                                    onFocus={handleInputFocus}
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={2}>
+                            <div className="form-control">
+                            <input
+                                type="tel"
+                                name="cardExpirationMonth"
+                                id="form-checkout__cardExpirationMonth"
+                                onChange={handleInputChange}
+                                onFocus={handleInputFocus}
+                            />
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2}>
+                            <div className="form-control">
+                                <input
+                                    type="tel"
+                                    name="cardExpirationYear"
+                                    id="form-checkout__cardExpirationYear"
+                                    onChange={handleInputChange}
+                                    onFocus={handleInputFocus}
+                                />
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2}>
+                            <div className="form-control">
+                                <input
+                                    type="tel"
+                                    name="cvc"
+                                    id="form-checkout__securityCode"
+                                    onChange={handleInputChange}
+                                    onFocus={handleInputFocus}
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <input
+                                    type="text"
+                                    name="cardholderName"
+                                    id="form-checkout__cardholderName"
+                                    onChange={handleInputChange}
+                                    onFocus={handleInputFocus}
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <input
+                                    type="email"
+                                    name="cardholderEmail"
+                                    id="form-checkout__cardholderEmail"
+                                    onFocus={handleInputFocus}
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <select name="issuer" id="form-checkout__issuer"/>
+                                <select name="identificationType" id="form-checkout__identificationType" />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <input
+                                    type="text"
+                                    name="identificationNumber"
+                                    id="form-checkout__identificationNumber"
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <select name="installments" id="form-checkout__installments" />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <BootstrapButton
+                                    variant="contained"
+                                    color="primary"
+                                    type="submit"
+                                    id="form-checkout__submit"
+                                    disableRipple className={classes.margin}>
+                                    Pagar
+                                </BootstrapButton>
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={5} alignItems="flex-end">
+                        <Grid item xs={12} sm={6} md={3}/>
+                        <Grid item xs={12} sm={6} md={6}>
+                            <div className="form-control">
+                                <progress value="0" className="progress-bar">
+                                    Cargando...
+                                </progress>
+                            </div>
+                        </Grid>
+                    </Grid>
             </form>
-            {resultPayment && <p>{JSON.stringify(resultPayment)}</p>}
-        </div>
+            {resultPayment && paymentSuccess()}
+            </Container>
+        </Fragment>
     );
 }

@@ -3,7 +3,7 @@ import {useContext, useState} from 'react'
 import { UserContext } from './UserContext'
 
 export const useReload = (history) => {
-    const { userCtx } = useContext(UserContext)
+    const { userCtx, setUserCtx } = useContext(UserContext)
     const [load, setLoad] = useState(false)
 
     const makePayment = async (amount, silk, paymentDesc) => {
@@ -100,5 +100,5 @@ export const useReload = (history) => {
             ]
         },
     ]
-    return { makePayment, load, setLoad, SilkRatio }
+    return { makePayment, load, setLoad, SilkRatio, setUserCtx, userCtx }
 }

@@ -1,20 +1,35 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import useScript from "./useScript";
 import { formConfig } from "../helpers/MercadoPagoFormConfig.js";
+import {UserContext} from "./UserContext";
 
-export default function useMercadoPago() {
+export const useCheckOutMercadoPago = (history) => {
+    const [load, setLoad] = useState(false)
+    function paymentSuccess() {
+        history.push('/')
+    }
+    return {
+        paymentSuccess,
+        setLoad,
+        load
+    }
+}
+
+export function useMercadoPagoApi() {
     const [resultPayment, setResultPayment] = useState(undefined);
-
+    const { userCtx, setUserCtx } = useContext(UserContext)
+    const { setLoad } = useCheckOutMercadoPago();
     const { MercadoPago } = useScript(
-        "https://sdk.mercadopago.com/js/v2",
+        process.env.URL_API_MP,
         "MercadoPago"
     );
 
+    const silkQuantity = userCtx.buySilkQuantity.toString()
     useEffect(() => {
         if (MercadoPago) {
-            const mp = new MercadoPago('TEST-3914c37f-df8e-47ba-80b3-081ae1b55637');
+            const mp = new MercadoPago(process.env.PUBLIC_KEY_MP);
             const cardForm = mp.cardForm({
-                amount: "100.5",
+                amount: silkQuantity,
                 autoMount: true,
                 form: formConfig,
                 callbacks: {
@@ -41,7 +56,7 @@ export default function useMercadoPago() {
                         } = cardForm.getCardFormData();
 
                         fetch(
-                            `http://localhost:4000/process-payment`,
+                            process.env.URL_PAYMENT_MP,
                             {
                                 // entry point backend
                                 method: "POST",

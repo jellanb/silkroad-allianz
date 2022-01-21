@@ -10,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import SelectionReload from '../components/SelectionReload';
 import Typography from "@material-ui/core/Typography";
 import logoPaypal from '../images/logoPaypal.png';
+import logoMercadoPago from '../images/logo-mercadopago.png';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useReload } from "../hooks/useReload";
 import imagenFondo from '../images/fondoReload.jpg';
@@ -52,7 +53,7 @@ const client = [
     buttonText: 'Pagar con MercadoPago',
     buttonVariant: 'contained',
     href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js',
-    image: logoPaypal
+    image: logoMercadoPago
   }
 ];
 
@@ -60,11 +61,12 @@ export default function Reload({history}) {
   const classes = useStyles();
   const [totalSilk, setTotalSilk] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const { makePayment, load, setLoad, SilkRatio } = useReload(history)
+  const { makePayment, load, setLoad, SilkRatio, setUserCtx, userCtx } = useReload(history)
 
   const handleChangeAmount = (quantity) => {
     setTotalAmount(quantity/200)
     setTotalSilk(quantity)
+    setUserCtx({...userCtx, buySilkQuantity: quantity/200})
   }
 
   const handlePaymentClick = async (event) => {
@@ -111,7 +113,7 @@ export default function Reload({history}) {
                     <Card>
                       <CardMedia
                           className={classes.media}
-                          image={logoPaypal}
+                          image={tier.image}
                           title="Paypal"
                       />
                       <CardContent>

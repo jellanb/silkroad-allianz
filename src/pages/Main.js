@@ -43,11 +43,11 @@ export default function Main(){
             <Container maxWidth='xl' className={classes.container}>
                 <br/>
                 <Grid container spacing={1}>
-                    <Grid item xl={2} lg={3} xs={3}>
+                    <Grid item xl={2} lg={3} xs={12}>
                         <ServerInfo/>
                         <DownloadBox />
                     </Grid>
-                    <Grid item xl={9} lg={9} xs={9}>
+                    <Grid item xl={9} lg={9} xs={12}>
                         <Carousel>
                             {
                                 items.map((item, index) => <Item key={index} item={item}/>)
