@@ -1,12 +1,18 @@
 import {useContext, useEffect, useState} from "react";
 import useScript from "./useScript";
 import { formConfig } from "../helpers/MercadoPagoFormConfig.js";
-import {UserContext} from "./UserContext";
+import { UserContext } from "./UserContext";
+import dotenv from 'dotenv';
+import { addSilkAfterPayment } from '../helpers/fetchUsers';
+dotenv.config();
 
 export const useCheckOutMercadoPago = (history) => {
     const [load, setLoad] = useState(false)
+    const { userCtx, setUserCtx } = useContext(UserContext)
     function paymentSuccess() {
-        history.push('/')
+        addSilkAfterPayment(userCtx.username, userCtx.silkPay);
+        setUserCtx({...userCtx, silk: userCtx.silk + userCtx.silkPay});
+        history.push('/');
     }
     return {
         paymentSuccess,
@@ -17,19 +23,19 @@ export const useCheckOutMercadoPago = (history) => {
 
 export function useMercadoPagoApi() {
     const [resultPayment, setResultPayment] = useState(undefined);
-    const { userCtx, setUserCtx } = useContext(UserContext)
-    const { setLoad } = useCheckOutMercadoPago();
+    const { userCtx } = useContext(UserContext);
+    console.log(userCtx);
     const { MercadoPago } = useScript(
-        process.env.URL_API_MP,
+        process.env.REACT_APP_URL_API_MP,
         "MercadoPago"
     );
 
-    const silkQuantity = userCtx.buySilkQuantity.toString()
+    const amount = userCtx.amount.toString();
     useEffect(() => {
         if (MercadoPago) {
-            const mp = new MercadoPago(process.env.PUBLIC_KEY_MP);
+            const mp = new MercadoPago(process.env.REACT_APP_PUBLIC_KEY_MP);
             const cardForm = mp.cardForm({
-                amount: silkQuantity,
+                amount: amount,
                 autoMount: true,
                 form: formConfig,
                 callbacks: {
@@ -56,7 +62,7 @@ export function useMercadoPagoApi() {
                         } = cardForm.getCardFormData();
 
                         fetch(
-                            process.env.URL_PAYMENT_MP,
+                            process.env.REACT_APP_URL_SURVIVALSRO_SERVER,
                             {
                                 // entry point backend
                                 method: "POST",
@@ -70,9 +76,9 @@ export function useMercadoPagoApi() {
                                     token,
                                     issuer_id,
                                     payment_method_id,
-                                    transaction_amount: 1000,
+                                    transaction_amount: userCtx.buySilkQuantity,
                                     installments: Number(installments),
-                                    description: "Descripción del producto",
+                                    description: "Silk",
                                     payer: {
                                         email,
                                         identification: {

@@ -50,7 +50,7 @@ const client = [
   },
   {
     title: 'MercadoPago',
-    buttonText: 'Pagar con MercadoPago',
+    buttonText: 'Pagar con MercadoPago (Chile)',
     buttonVariant: 'contained',
     href: 'https://mega.nz/file/fAwg2JhL#5xOJ16GCpME6R-6SOGjY10ZZPmO6yyPJ4bluCCGg5js',
     image: logoMercadoPago
@@ -61,13 +61,21 @@ export default function Reload({history}) {
   const classes = useStyles();
   const [totalSilk, setTotalSilk] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const { makePayment, load, setLoad, SilkRatio, setUserCtx, userCtx } = useReload(history)
+  const { makePayment, load, setLoad, SilkRatio, setUserCtx, userCtx, getDollarValueToPeso } = useReload(history)
 
-  const handleChangeAmount = (quantity) => {
+  const handleChangeAmount = async (quantity) => {
+    setLoad(true);
+    console.log(quantity);
+    const value = parseInt(await getDollarValueToPeso()) + 1;
+    console.log(value);
     setTotalAmount(quantity/200)
+    console.log(totalAmount);
     setTotalSilk(quantity)
-    setUserCtx({...userCtx, buySilkQuantity: quantity/200})
+    setUserCtx({...userCtx, amount: quantity/200 * value, silkPay: quantity})
+
+    setLoad(false);
   }
+
 
   const handlePaymentClick = async (event) => {
     const paymentDesc = event.target.innerText
