@@ -65,14 +65,10 @@ export default function Reload({history}) {
 
   const handleChangeAmount = async (quantity) => {
     setLoad(true);
-    console.log(quantity);
     const value = parseInt(await getDollarValueToPeso()) + 1;
-    console.log(value);
     setTotalAmount(quantity/200)
-    console.log(totalAmount);
     setTotalSilk(quantity)
     setUserCtx({...userCtx, amount: quantity/200 * value, silkPay: quantity})
-
     setLoad(false);
   }
 
