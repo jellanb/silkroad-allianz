@@ -36,12 +36,11 @@ const useStyles = makeStyles((theme) => ({
     },
     mediaDownload: {
         height: 50,
-        width: 100
     },
     Card: {
-        maxWidth: 200,
+        maxWidth: 220,
         backgroundColor: 'transparent',
-        paddingRight: '10%',
+        paddingRight: '0%',
     },
 }));
 
@@ -68,7 +67,7 @@ export default function Footer({ description, title }) {
             <Grid container>
                 <Grid item lg={4} xs={12}>
                 </Grid>
-            <Grid item lg={4} xs={6}>
+            <Grid item lg={4} xs={12}>
                 <Typography variant="h6" align="center" gutterBottom>
                     {title}
                 </Typography>
@@ -89,7 +88,7 @@ export default function Footer({ description, title }) {
                         </div>)}
                 </Typography>
                 </Grid>
-                <Grid item lg={4} xs={6}>
+                <Grid item lg={4} xs={12}>
                     <Sidebar
                     social={sidebar.social}
                     />
