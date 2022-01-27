@@ -14,6 +14,7 @@ import Download from './pages/Download';
 import Reload from './pages/Reload';
 import Politics from './pages/Politics';
 import EditAccount from './pages/EditAccount';
+import MercadoPago from './pages/MercadoPagoPayment';
 import { UserContext } from './hooks/UserContext';
 
 export default function SilkroadSurvivalApp (){
@@ -32,7 +33,7 @@ export default function SilkroadSurvivalApp (){
                     <Route exact path='/download' component={Download} />
                     <Route exact path='/politics' component={Politics} />
                     <Route exact path='/editAccount' component={EditAccount} />
-                    {/*<Route exact path='/Ranking' component={Ranking} />*/}
+                    <Route exact path='/MercadoPago' component={MercadoPago} />
                 </Switch>
             </Router>
             <Footer title="Silkroad Survival" description="Servidor Privado" />

@@ -56,9 +56,13 @@ export default function SelectionReload({ title, max, min, defaultValue, mark, h
     const classes = useStyles();
     const [ value, setValue ] = useState(0);
 
-    const handleChangeSlider = (event, newValue) => {
-        setValue(newValue)
-        handleChange(value)
+    const handleChangeSlider = async (event, newValue) => {
+        await setValue(newValue);
+    }
+
+    const handleChangeCommit = async () => {
+        await handleChange(value);
+        console.log(value);
     }
 
     return (
@@ -75,7 +79,7 @@ export default function SelectionReload({ title, max, min, defaultValue, mark, h
                         marks={mark}
                         defaultValue={defaultValue}
                         onChange={handleChangeSlider}
-                        onChangeCommitted={handleChangeSlider}
+                        onChangeCommitted={handleChangeCommit}
                     />
                         <div className={classes.margin} />
                 </CardContent>

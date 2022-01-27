@@ -32,8 +32,12 @@ export const getUserLastUniqueKill = async () => {
     const url = `${process.env.REACT_APP_API_URL}/users/getUserLastUniqueKill`
     return (await fetch(url, {mode:'cors', method:'GET'})).json();
 }
-
 export const getQuantityUsersOnline = async () => {
     const url = `${process.env.REACT_APP_API_URL}/users/getQuantityUsersOnline`
-    return (await fetch(url, {mode:'cors', method:'GET'})).json();
+    return (await fetch(url, {mode: 'cors', method: 'GET'})).json();
+}
+
+export const addSilkAfterPayment = async (username, silkQuantity) => {
+    const url = `${process.env.REACT_APP_API_URL}/users/add-silk-after-payment?username=${username}&silkQuantity=${silkQuantity}`
+    return (await fetch(url, {mode:'cors', method:'POST'})).json();
 }

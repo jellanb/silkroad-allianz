@@ -32,7 +32,6 @@ export const useSingIn = () => {
 
     const handlePasswordOnBlur = (e) =>{
         let value = e.target.value;
-        console.log(e.key)
         if (value && value.length >= 6)
         {
             setUser({ ...user, password: value,  errorPass: false, descPass: ''});

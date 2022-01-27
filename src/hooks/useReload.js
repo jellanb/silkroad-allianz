@@ -1,20 +1,31 @@
 import { UseFetchCreateOrderPayment } from '../helpers/fetchPayment'
+import { UseFetchGetPesoToDollar } from '../helpers/fetchCmfChile'
 import {useContext, useState} from 'react'
 import { UserContext } from './UserContext'
 
 export const useReload = (history) => {
-    const { userCtx } = useContext(UserContext)
+    const { userCtx, setUserCtx } = useContext(UserContext)
     const [load, setLoad] = useState(false)
 
-    const makePayment = async (amount, silk) => {
+    const getDollarValueToPeso = async () => {
+        //const { Dolares } = await UseFetchGetPesoToDollar();
+        //const { Valor : pesos } = Dolares[0];
+        return 804 //pesos
+    }
 
+    const makePayment = async (amount, silk, paymentDesc) => {
         if (!userCtx.username) {
-            history.push('/singIn')
+            history.push('/SingIn')
             return
         }
-
-        const result = await UseFetchCreateOrderPayment(userCtx.username, amount, silk)
-        return result.href
+        if (paymentDesc === 'PAGAR CON PAYPAL') {
+            const result = await UseFetchCreateOrderPayment(userCtx.username, amount, silk)
+            return result.href
+        }
+        if (paymentDesc === 'PAGAR CON MERCADOPAGO (CHILE)') {
+            history.push('/MercadoPago')
+            return
+        }
     }
 
     const SilkRatio = [
@@ -95,5 +106,5 @@ export const useReload = (history) => {
             ]
         },
     ]
-    return { makePayment, load, setLoad, SilkRatio }
+    return { makePayment, load, setLoad, SilkRatio, setUserCtx, userCtx, getDollarValueToPeso }
 }

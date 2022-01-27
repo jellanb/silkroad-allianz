@@ -19,11 +19,13 @@
     "markdown": "^0.5.0",
     "markdown-to-jsx": "^7.1.2",
     "react": "^17.0.2",
+    "react-credit-cards": "^0.8.3",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-material-ui-carousel": "^2.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-sdk-mercadopago": "^1.1.1",
     "typescript": "^4.5.2",
     "web-vitals": "^1.1.2"
   },
@@ -50,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cleave.js": "^1.6.0"
   }
 }
