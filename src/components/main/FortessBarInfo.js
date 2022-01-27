@@ -34,7 +34,7 @@ export default function FortesBarInfo() {
                     <Grid container spacing={1}>
                         <Grid item xl={4} lg={4} xs={4}>
                             <Typography variant="h6" >
-                                <GiAbstract103/> {'JG Fortess: OnlyFANS'}
+                                <GiAbstract103/> {'JG Fortess: Not occupied'}
                             </Typography>
                         </Grid>
                         <Grid item xl={4} lg={4} xs={4}>
