@@ -32,3 +32,8 @@ export const getUserLastUniqueKill = async () => {
     const url = `${process.env.REACT_APP_API_URL}/users/getUserLastUniqueKill`
     return (await fetch(url, {mode:'cors', method:'GET'})).json();
 }
+
+export const getQuantityUsersOnline = async () => {
+    const url = `${process.env.REACT_APP_API_URL}/users/getQuantityUsersOnline`
+    return (await fetch(url, {mode:'cors', method:'GET'})).json();
+}

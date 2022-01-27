@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { GiAbstract103, GiAmmoniteFossil, GiDeathZone } from 'react-icons/gi';
+import GroupIcon from '@material-ui/icons/Group';
 import UseFortesBarIndo from '../../hooks/useFortesBarIndo'
 
 const useStyles = makeStyles({
@@ -21,10 +22,11 @@ const useStyles = makeStyles({
 
 export default function FortesBarInfo() {
     const classes = useStyles();
-    const { getUserLastKill, userLastKill } = UseFortesBarIndo()
+    const { getUserLastKill, userLastKill, loadUsersOnline, usersOnlineCount } = UseFortesBarIndo()
 
     useEffect(()=> {
-        getUserLastKill()
+        getUserLastKill();
+        loadUsersOnline();
     }, [])
 
     return (
@@ -32,26 +34,26 @@ export default function FortesBarInfo() {
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        <Grid item xl={4} lg={4} xs={4}>
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                 <GiAbstract103/> {'JG Fortess: Not occupied'}
                             </Typography>
                         </Grid>
-                        <Grid item xl={4} lg={4} xs={4}>
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                 <GiAmmoniteFossil/> {'HT Fortess: Not occupied'}
                             </Typography>
                         </Grid>
-                        <Grid item xl={4} lg={4} xs={4}>
+                        <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
                             </Typography>
                         </Grid>
-                        {/*<Grid item xl={3} lg={3} xs={3}>
-                            <Typography variant="h6" >
-                                <GiDeathZone/> {`Online Players: 100`}
+                        <Grid item xl={3} lg={3} xs={3}>
+                            <Typography variant="h6" color={'secondary'}>
+                                <GroupIcon/> {`Online Players: ${usersOnlineCount}`}
                             </Typography>
-                        </Grid>*/}
+                        </Grid>
                     </Grid>
 
                 </Toolbar>
