@@ -22,11 +22,12 @@ const useStyles = makeStyles({
 
 export default function FortesBarInfo() {
     const classes = useStyles();
-    const { getUserLastKill, userLastKill, loadUsersOnline, usersOnlineCount } = UseFortesBarIndo()
+    const { getUserLastKill, userLastKill, loadUsersOnline, usersOnlineCount, getFortressInfo, fortressInfo } = UseFortesBarIndo()
 
     useEffect(()=> {
         getUserLastKill();
         loadUsersOnline();
+        getFortressInfo();
     }, [])
 
     return (
@@ -34,16 +35,13 @@ export default function FortesBarInfo() {
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        <Grid item xl={3} lg={3} xs={3}>
-                            <Typography variant="h6" >
-                                <GiAbstract103/> {'JG Fortess: Not occupied'}
-                            </Typography>
-                        </Grid>
-                        <Grid item xl={3} lg={3} xs={3}>
-                            <Typography variant="h6" >
-                                <GiAmmoniteFossil/> {'HT Fortess: Not occupied'}
-                            </Typography>
-                        </Grid>
+                        {fortressInfo.map((ftwInfo, index) => (
+                            <Grid item xl={3} lg={3} xs={3}>
+                                <Typography variant="h6" >
+                                    <GiAbstract103/> {`${ftwInfo.fortressName}  ${ftwInfo.guildName}`}
+                                </Typography>
+                            </Grid>)
+                            )}
                         <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}

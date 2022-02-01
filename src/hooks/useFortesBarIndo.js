@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { getUserLastUniqueKill, getQuantityUsersOnline } from '../helpers/fetchUsers';
+import { UseGetFortressInfo } from '../helpers/fetchFortressInfo';
 
 
 export default function UseFortesBarIndo() {
     const [userLastKill, setUserLastKill] = useState({});
     const [usersOnlineCount, setUsersOnlineCount ] = useState({});
+    const [fortressInfo, setFortressInfo] = useState([{}])
+
+    const getFortressInfo = async () => {
+        const getFortressInfo = await UseGetFortressInfo();
+        setFortressInfo(getFortressInfo);
+    }
 
     const getUserLastKill = async () => {
         const { CharName16 } = await getUserLastUniqueKill();
@@ -20,6 +27,8 @@ export default function UseFortesBarIndo() {
         getUserLastKill,
         userLastKill,
         loadUsersOnline,
-        usersOnlineCount
+        usersOnlineCount,
+        getFortressInfo,
+        fortressInfo
     }
 }
