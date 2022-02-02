@@ -12,6 +12,8 @@ import Card from '@material-ui/core/Card';
 import iconMain from '../../../images/logocentro5.png';
 import ControlAccount from './ControlAccount';
 import { UserContext } from '../../../hooks/UserContext';
+import Box from '@mui/material/Box';
+import MobileMenuButton from './MobileMenuButton';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +58,7 @@ export default function Header() {
                                 <CardMedia className={classes.cardMediaIconMain} image={iconMain} />
                         </Card>
                     </Typography>
+                    <Box component="span" sx={{ display: { xs: 'none', md:'none', lg: 'block', ms: 'none' } }}>
                     <ButtonGroup  variant="text" color="inherit" aria-label="text primary button group">
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
@@ -92,6 +95,10 @@ export default function Header() {
                         }
                         <ControlAccount username={username} silk={silk} isSingIn={isSingIn}/>
                     </ButtonGroup>
+                    </Box>
+                    <Box component="span" sx={{ display: { xl: 'none', md:'none', sm: 'block' } }}>
+                        <MobileMenuButton userCtx={userCtx}/>
+                    </Box>
                 </Toolbar>
              </AppBar>
         </React.Fragment>
