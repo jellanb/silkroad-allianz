@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Header({setLocale, locale}) {
+export default function Header({setMessage, locale, setLocale}) {
     const classes = useStyles();
     const  { userCtx }  = useContext(UserContext);
     const { username, silk, isSingIn } = userCtx;
@@ -96,7 +96,7 @@ export default function Header({setLocale, locale}) {
                                 </Button>
                         }
                         <ControlAccount username={username} silk={silk} isSingIn={isSingIn}/>
-                        <SelectionLength setLocale={setLocale} locale={locale} />
+                        <SelectionLength setMessage={setMessage} locale={locale} setLocale={setLocale}/>
                     </ButtonGroup>
                     </Box>
                     <Box component="span" sx={{ display: { xl: 'none', md:'none', sm: 'block' } }}>

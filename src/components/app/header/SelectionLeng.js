@@ -10,26 +10,79 @@ import {
     IconFlagUS,
     IconFlagTR
 } from 'material-ui-flags';
+import Spanish from '../../../lang/es.json';
+import Turk from '../../../lang/tr.json';
+import English from '../../../lang/en.json';
+import {FormattedMessage} from "react-intl";
+import {makeStyles} from "@material-ui/core/styles";
 
-export default function SelectionLength({setLocale, locale}) {
+
+const useStyles = makeStyles((theme) => ({
+    toolbar: {
+        borderRadius: "0%",
+        backgroundColor: '#1B1919',
+        borderColor: 'white',
+        paper: 'white'
+    },
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    title: {
+        flexGrow: 1,
+        backgroundColor: 'black',
+    },
+    iconMain: {
+        "& > *": {
+            margin: theme.spacing(1),
+            width: theme.spacing(30),
+            height: theme.spacing(8),
+            maxWidth: 345,
+        },
+        backgroundColor: '#1B1919',
+    },
+    cardMediaIconMain: {
+        backgroundColor: '#1B1919',
+    }
+}));
 
 
+export default function SelectionLength({setMessage, locale, setLocale}) {
+    const classes = useStyles();
     const handleChange = (event) => {
-        setLocale(event.target.value)
-    };
+        switch (event.target.value) {
+            case 'en-US':{
+                setLocale('en-US');
+                setMessage(English);
+                break;
+            }
+            case 'es-ES':{
+                setLocale('es-ES');
+                setMessage(Spanish);
+                break;
+            }
+            case 'tr-TR':{
+                setLocale('tr-TR');
+                setMessage(Turk);
+                break
+            }
+        }
+    }
+
 
     return (
-        <Box sx={{ minWidth: 30 }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Box sx={{ minWidth: 30 }} className={classes.toolbar}>
+            <FormControl  >
                 <Select
+                    dropDownMenuProps={classes.toolbar}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={locale}
                     label="Age"
                     onChange={handleChange}
                 >
-                    <MenuItem value={'es-Es'}>
+                    <MenuItem value={'es-ES'}>
                         <IconButton>
                             <IconFlagES/>
                         </IconButton>

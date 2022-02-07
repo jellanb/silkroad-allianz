@@ -17,15 +17,14 @@ import EditAccount from './pages/EditAccount';
 import MercadoPago from './pages/MercadoPagoPayment';
 import { UserContext } from './hooks/UserContext';
 
-export default function SilkroadSurvivalApp ({hooksLanguage}){
+export default function SilkroadSurvivalApp ({setMessage, locale, setLocale}){
     const [userCtx, setUserCtx] = useState({});
-    const { locale, setLocale } = hooksLanguage();
 
     return (
         <UserContext.Provider value={{userCtx, setUserCtx}}>
         <React.Fragment>
             <Router>
-            <Header setLocale={setLocale} locale={locale}/>
+            <Header setMessage={setMessage} locale={locale} setLocale={setLocale}/>
                 <Switch>
                     <Route exact path='/' component={Main} />
                     <Route exact path='/singUp' component={SingUp} />

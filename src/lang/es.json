@@ -6,6 +6,7 @@
   "app.buttonSingUp":"Crear Cuenta",
   "app.buttonSingIn":"Login",
   "app.barUsersOnline":"Usuarios Online",
+  "app.Lang":"Idioma",
 
   "app.loginTitle":"Iniciar Sesion",
   "app.loginInputUserId":"ID cuenta",
