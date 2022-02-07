@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { GiAbstract103, GiAmmoniteFossil, GiDeathZone } from 'react-icons/gi';
 import GroupIcon from '@material-ui/icons/Group';
 import UseFortesBarIndo from '../../hooks/useFortesBarIndo'
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = makeStyles({
     main: {
@@ -49,7 +50,9 @@ export default function FortesBarInfo() {
                         </Grid>
                         <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" color={'secondary'}>
-                                <GroupIcon/> {`Online Players: ${usersOnlineCount}`}
+                                <GroupIcon/>
+                                <FormattedMessage id='app.barUsersOnline'/>
+                                {`: ${usersOnlineCount}` }
                             </Typography>
                         </Grid>
                     </Grid>

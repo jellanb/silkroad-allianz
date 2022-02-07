@@ -14,6 +14,8 @@ import ControlAccount from './ControlAccount';
 import { UserContext } from '../../../hooks/UserContext';
 import Box from '@mui/material/Box';
 import MobileMenuButton from './MobileMenuButton';
+import {FormattedMessage} from 'react-intl';
+import SelectionLength from './SelectionLeng';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Header() {
+export default function Header({setLocale, locale}) {
     const classes = useStyles();
     const  { userCtx }  = useContext(UserContext);
     const { username, silk, isSingIn } = userCtx;
@@ -62,7 +64,7 @@ export default function Header() {
                     <ButtonGroup  variant="text" color="inherit" aria-label="text primary button group">
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>
-                                Inicio
+                                <FormattedMessage id="app.buttonMain" />
                             </Link>
                         </Button>
                         {/*<Button>
@@ -72,28 +74,29 @@ export default function Header() {
                         </Button>*/}
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/download'>
-                                Descargas
+                                <FormattedMessage id="app.buttonDownload" />
                             </Link>
                         </Button>
                         <Button>
                             <Link style={{ textDecoration: 'none', color: 'white'}} to='/politics'>
-                                Politicas
+                                <FormattedMessage id="app.buttonPolitic" />
                             </Link>
                         </Button>
                         {
                             (username)
                                 ? <Button>
                                     <Link style={{ textDecoration: 'none', color: 'white'}} to='/Reload'>
-                                        Recargar
+                                        <FormattedMessage id="app.buttonReload" />
                                     </Link>
                                 </Button>
                                 : <Button>
                                     <Link style={{ textDecoration: 'none', color: 'white'}} to='/SingUp'>
-                                        Crear Cuenta
+                                        <FormattedMessage id="app.buttonSingUp" />
                                     </Link>
                                 </Button>
                         }
                         <ControlAccount username={username} silk={silk} isSingIn={isSingIn}/>
+                        <SelectionLength setLocale={setLocale} locale={locale} />
                     </ButtonGroup>
                     </Box>
                     <Box component="span" sx={{ display: { xl: 'none', md:'none', sm: 'block' } }}>

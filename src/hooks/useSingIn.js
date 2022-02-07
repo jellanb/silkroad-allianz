@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { UserFetchLogin, UseFetchUsersByName } from '../helpers/fetchUsers'
 import { UserContext } from '../hooks/UserContext';
+import { FormattedMessage } from 'react-intl';
 
 export const useSingIn = () => {
     const [user, setUser] = useState({});
@@ -17,7 +18,7 @@ export const useSingIn = () => {
         const value = e.target.value;
         const result = await UseFetchUsersByName(value);
         if (!value) {
-            setUser({...user, errorIsValid: true, descName: `Username is required!`})
+            setUser({...user, errorIsValid: true, descName: <FormattedMessage id='app.loginInputSingInError'/>})
             setLoad(false)
             return
         }
@@ -25,7 +26,16 @@ export const useSingIn = () => {
             setUser({...user, username: value, errorIsValid: false, descName: ''})
             setLoad(false)
         } else {
-            setUser({...user, errorIsValid: true, descName: `Username ${value} not exist!`})
+            function getMessageError(){
+                return (
+                    <div>
+                        <FormattedMessage id='app.loginInputSingInError2'/>
+                        {`  ${value}  `}
+                        <FormattedMessage id='app.loginInputSingInError3'/>
+                    </div>
+
+                )}
+            setUser({...user, errorIsValid: true, descName: getMessageError()})
             setLoad(false)
         }
     }
