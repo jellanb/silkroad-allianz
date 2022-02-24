@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import ProgressIcon from './ProgressIcon';
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -10,6 +10,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function TypographyDemo(props) {
+    const { loading = false } = props;
+
+    return (
+        <div>
+            {loading ? <ProgressIcon/> : <div/>}
+        </div>
+    );
+}
 
 export default function BackDropPayment({open}) {
     const classes = useStyles()
@@ -20,7 +29,7 @@ export default function BackDropPayment({open}) {
                 className={classes.backdrop}
                 open={open}
             >
-                <CircularProgress color="inherit" />
+                <TypographyDemo loading={open} /> {/*<CircularProgress color="inherit" />*/}
             </Backdrop>
         </Fragment>
     );

@@ -21,14 +21,14 @@ const useStyles = makeStyles({
     }
 });
 
-export default function FortesBarInfo() {
+export default function FortesBarInfo({setLoad, setOpenDialog}) {
     const classes = useStyles();
     const { getUserLastKill, userLastKill, loadUsersOnline, usersOnlineCount, getFortressInfo, fortressInfo } = UseFortesBarIndo()
 
     useEffect(()=> {
-        getUserLastKill();
-        loadUsersOnline();
-        getFortressInfo();
+        getUserLastKill(setOpenDialog);
+        loadUsersOnline(setOpenDialog);
+        getFortressInfo(setLoad, setOpenDialog);
     }, [])
 
     return (

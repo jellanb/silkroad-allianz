@@ -14,7 +14,7 @@ import logoMercadoPago from '../images/logo-mercadopago.png';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useReload } from "../hooks/useReload";
 import imagenFondo from '../images/fondoReload.jpg';
-import BackDropPayment from '../components/common/BackDropPayment'
+import BackDropPayment from '../components/common/progress/BackDropPayment'
 
 const useStyles = makeStyles((theme) => ({
   root: {
