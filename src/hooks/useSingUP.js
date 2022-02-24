@@ -42,7 +42,7 @@ export const useSingUp = () => {
             return
         }
 
-        const result = UseFetchAddUser(user);
+        const result = await UseFetchAddUser(user);
         if (result !== undefined){
             setLoad(false);
             setDialog(true);
