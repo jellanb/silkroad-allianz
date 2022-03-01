@@ -35,13 +35,13 @@ export default function FortesBarInfo({setLoad}) {
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        {/*{fortressInfo.map((ftwInfo) => (
+                        {fortressInfo.map((ftwInfo) => (
                             <Grid item xl={3} lg={3} xs={3}>
                                 <Typography variant="h6" >
                                     <GiAbstract103/> {`${ftwInfo.fortressName}  ${ftwInfo.guildName}`}
                                 </Typography>
                             </Grid>)
-                            )}*/}
+                            )}
                         <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
