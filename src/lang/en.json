@@ -34,12 +34,12 @@
   "app.SingUpInputUserIdError":"Username is required!",
   "app.SingUpInputNameError":"Name is required!",
   "app.SingUpInputEmailError":"Email is required!",
-  "app.SingUpInputEmailError2":"E-posta zaten var!",
+  "app.SingUpInputEmailError2":"Email already exist!",
   "app.SingUpInputPassError":"6 character minimum!",
   "app.SingUpInputSecretQError":"you must select a secret question!",
   "app.SingUpInputSecretAError":"you must enter a secret answer!",
   "app.loginInputSingUpError2":"username",
-  "app.loginInputSingUpError3":"not exist!",
+  "app.loginInputSingUpError3":"already exist!",
   "app.SingUpPopUpMessage":"Congratulations you have successfully created your account!",
   "app.SingUpPopUpMessage1":"Your account ID is :"
 

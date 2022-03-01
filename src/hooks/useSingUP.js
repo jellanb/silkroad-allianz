@@ -60,7 +60,10 @@ export const useSingUp = () => {
         }
 
         const result = await UseFetchUsersByName(value);
-        if (result.isValid) {
+        if (!result.isValid) {
+            setUser({...user, isValid: result.isValid, username: value, errorIsValid: false, descName: ''})
+            setLoad(false);
+        } else {
             function getMessageError(){
                 return (
                     <div>
@@ -71,9 +74,6 @@ export const useSingUp = () => {
                 )
             }
             setUser({...user, errorIsValid: true, descName: getMessageError()})
-            setLoad(false);
-        } else {
-            setUser({...user, isValid: result.isValid, username: value, errorIsValid: false, descName: ''})
             setLoad(false);
         }
     }
@@ -97,6 +97,7 @@ export const useSingUp = () => {
             return
         }
         const email = await UserFetchEmailByEmail(value)
+        console.log(email)
         if (email.isValid) {
             setUser({...user, email: value, errorEmail: false, descEmail: ''})
             setLoad(false)

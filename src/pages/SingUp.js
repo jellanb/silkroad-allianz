@@ -241,6 +241,5 @@ export default function SignUp() {
         </Container>
         <BackDropPayment open={load}/>
       </Fragment>
-
   );
 }

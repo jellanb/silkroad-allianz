@@ -1,48 +1,29 @@
 import { useState } from 'react';
-import { getUserLastUniqueKill, getQuantityUsersOnline } from '../helpers/fetchUsers';
-import { UseGetFortressInfo } from '../helpers/fetchFortressInfo';
+import { getLoadInformation } from '../helpers/fetchUsers';
 
 
 export default function UseFortesBarIndo() {
     const [userLastKill, setUserLastKill] = useState({});
-    const [usersOnlineCount, setUsersOnlineCount ] = useState({});
-    const [fortressInfo, setFortressInfo] = useState([{}])
+    const [usersOnlineCount, setUsersOnlineCount] = useState({});
+    const [fortressInfo, setFortressInfo] = useState({});
 
-    const getUserLastKill = async (setOpenDialog) => {
+    const loadInformation = async (setOpenDialog) => {
         try {
-        const { CharName16 } = await getUserLastUniqueKill();
-        setUserLastKill(CharName16);
+            const { usersOnline, usernameLastUniqueKill, fortressInfo } = await getLoadInformation();
+            const { CharName16 } = usernameLastUniqueKill;
+            setUserLastKill(CharName16);
+            setUsersOnlineCount(usersOnline);
+            setFortressInfo(fortressInfo);
+            setOpenDialog(false);
         } catch (failure) {
             setOpenDialog(true);
         }
-    }
-
-    const loadUsersOnline = async (setOpenDialog) => {
-        try {
-        const { usersOnline } = await getQuantityUsersOnline();
-        setUsersOnlineCount(usersOnline + 30);
-        } catch (failure) {
-            setOpenDialog(true);
-        }
-    }
-
-    const getFortressInfo = async (setLoad, setOpenDialog) => {
-        try {
-            const getFortressInfo = await UseGetFortressInfo();
-            setFortressInfo(getFortressInfo);
-            setLoad(false);
-        } catch (failure) {
-            setOpenDialog(true);
-        }
-
     }
 
     return {
-        getUserLastKill,
+        loadInformation,
         userLastKill,
-        loadUsersOnline,
         usersOnlineCount,
-        getFortressInfo,
         fortressInfo
     }
 }

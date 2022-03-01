@@ -37,6 +37,8 @@
   "app.SingUpInputPassError":"6 caracteres minimo!",
   "app.SingUpInputSecretQError":"debe selecionar una pregunta secreta!",
   "app.SingUpInputSecretAError":"debe ingresar una respuesta secreta!",
+  "app.loginInputSingUpError2":"usuario",
+  "app.loginInputSingUpError3":"no existe!",
   "app.SingUpPopUpMessage":"Felicitaciones has creado tu cuenta correctamene!",
   "app.SingUpPopUpMessage1":"Tu ID de cuenta es :"
 }

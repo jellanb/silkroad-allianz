@@ -21,14 +21,13 @@ const useStyles = makeStyles({
     }
 });
 
-export default function FortesBarInfo({setLoad, setOpenDialog}) {
+export default function FortesBarInfo({setLoad}) {
     const classes = useStyles();
-    const { getUserLastKill, userLastKill, loadUsersOnline, usersOnlineCount, getFortressInfo, fortressInfo } = UseFortesBarIndo()
+    const { loadInformation, userLastKill, usersOnlineCount, fortressInfo } = UseFortesBarIndo()
 
     useEffect(()=> {
-        getUserLastKill(setOpenDialog);
-        loadUsersOnline(setOpenDialog);
-        getFortressInfo(setLoad, setOpenDialog);
+        loadInformation(setLoad);
+        setLoad(true);
     }, [])
 
     return (
@@ -36,13 +35,13 @@ export default function FortesBarInfo({setLoad, setOpenDialog}) {
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        {fortressInfo.map((ftwInfo, index) => (
+                        {/*{fortressInfo.map((ftwInfo) => (
                             <Grid item xl={3} lg={3} xs={3}>
                                 <Typography variant="h6" >
                                     <GiAbstract103/> {`${ftwInfo.fortressName}  ${ftwInfo.guildName}`}
                                 </Typography>
                             </Grid>)
-                            )}
+                            )}*/}
                         <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}

@@ -22,9 +22,10 @@ export const useSingIn = () => {
             setLoad(false)
             return
         }
+        console.log(result.isValid)
         if (result.isValid) {
-            setUser({...user, username: value, errorIsValid: false, descName: ''})
-            setLoad(false)
+            setUser({...user, username: value, errorIsValid: false, descName: ''});
+            setLoad(false);
         } else {
             function getMessageError(){
                 return (
