@@ -21,6 +21,7 @@ import SelectionLength from './SelectionLeng';
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         backgroundColor: '#1B1919',
+            height: theme.spacing(12),
     },
     root: {
         '& > *': {

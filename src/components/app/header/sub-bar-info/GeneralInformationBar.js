@@ -1,12 +1,12 @@
-import React, {Fragment, useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import GuildNameOccupied from "./GuildNameOccupied";
+import {Fragment} from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { GiAbstract103, GiAmmoniteFossil, GiDeathZone } from 'react-icons/gi';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { GiDeathZone } from 'react-icons/gi';
 import GroupIcon from '@material-ui/icons/Group';
-import UseFortesBarIndo from '../../hooks/useFortesBarIndo'
 import { FormattedMessage } from 'react-intl';
 
 const useStyles = makeStyles({
@@ -21,30 +21,17 @@ const useStyles = makeStyles({
     }
 });
 
-export default function FortesBarInfo({setLoad}) {
+export default function GeneralInformationBar({fortressInfo, userLastKill, usersOnlineCount}) {
     const classes = useStyles();
-    const { loadInformation, userLastKill, usersOnlineCount, fortressInfo } = UseFortesBarIndo()
-
-    useEffect(()=> {
-        loadInformation(setLoad);
-        setLoad(true);
-    }, [])
-
     return (
         <Fragment>
             <AppBar position="static" className={classes.main}>
                 <Toolbar variant="dense" className={classes.barInfo}>
                     <Grid container spacing={1}>
-                        {fortressInfo.map((ftwInfo) => (
-                            <Grid item xl={3} lg={3} xs={3}>
-                                <Typography variant="h6" >
-                                    <GiAbstract103/> {`${ftwInfo.fortressName}  ${ftwInfo.guildName}`}
-                                </Typography>
-                            </Grid>)
-                            )}
+                        {fortressInfo.map((ftwInfo) => (<GuildNameOccupied ftwInfo={ftwInfo} />))}
                         <Grid item xl={3} lg={3} xs={3}>
                             <Typography variant="h6" >
-                               <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
+                                <GiDeathZone/> {`Last unique kills: ${userLastKill}`}
                             </Typography>
                         </Grid>
                         <Grid item xl={3} lg={3} xs={3}>
@@ -55,9 +42,8 @@ export default function FortesBarInfo({setLoad}) {
                             </Typography>
                         </Grid>
                     </Grid>
-
                 </Toolbar>
             </AppBar>
         </Fragment>
-    );
+    )
 }
